@@ -1,49 +1,49 @@
 /**
-  * @file Point.h
-  * @date June 2025
-  * @brief Represents a Point in two dimensional space
-  * 
-  * @defgroup ELE3312
-  * @{
-  */
-#ifndef SRC_GRAPHICS_POINT_H_
-#define SRC_GRAPHICS_POINT_H_
+ * @file Point.cpp
+ * @date June 2025
+ * @brief Represents a Point in two dimensional space
+ * 
+ * @defgroup ELE3312
+ * @{
+ */
 
+#include "Interfaces/Display/Point.h"
+#include <cmath>
 
 namespace ELE3312 {
-/**
-  * @brief The class represents a point in two dimensional space
-  */
-template<typename T>
-class Point {
-public:
+
+	/** @brief default destructor
+	*/
+	Point::~Point() {
+	}
 
 	/** @brief Default constructor for the Point class.
 	*/
-	Point() : x{0}, y{0} {}
+	Point::Point(): x{0}, y{0} {
 
+	}
 	/** @brief Constructs a Point object.
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
 	 */
-	Point(T x, T y) : x{x}, y{y} {}
+	Point::Point(uint16_t x, uint16_t y): x{x}, y{y} {
+	}
+
 
 	/** @brief Copy-Constructor for the Point class.
 	 * @param [in] other Const reference to another point object.
 	 */
-	Point(const Point &other) : x{other.x}, y{other.y} {}
-
-	/** @brief default destructor
-	*/
-	~Point() {}
-
+	Point::Point(const Point &other) {
+		x = other.x;
+		y = other.y;
+	}
 
 	/** @brief Equals operator for the Point class.
-	 * @param [in] other A const reference to another Point object whose x and y
+	 * @param [in] other A const reference to another Point object which x and y
 	 * position will be copied into the Point object on the left side.
 	 * @return A reference to the Point object on the left side of the equal sign.
 	 */
-	Point & operator= (const Point &other) {
+	Point & Point::operator= (const Point &other) {
 		if (this != &other){
 			x = other.x;
 			y = other.y;
@@ -51,52 +51,34 @@ public:
 		return *this;
 	}
 
-
-	/** @brief Addition operator for the Point class.
-	  * @param [in] other Const reference to the other point object whose x and y 
-	  * positions are added to the current object's.
-	  * @return Reference to the current Point object.
-	  */
-	Point & operator+ (const Point &other) {
-		x += other.x;
-		y += other.y;
-		return *this;
-	}
-
-	template<class O>
-	friend Point<O> & operator+ (const Point<O> &p1, const Point<O> &p2);
-
-	template<typename O>
-	friend bool operator== (const Point<O> &p1, const Point<O> &p2);
-
 	/** @brief Returns the x coordinate.
 	 * @retval The x coordinate.
 	 */
-	T getX() const{
+	uint16_t Point::getX() const{
 		return x;
 	}
 
 	/** @brief Returns the y coordinate.
 	 * @retval The y coordinate.
 	 */
-	T getY() const{
+	uint16_t Point::getY() const{
 		return y;
 	}
 
 	/**
 	 * @brief Sets the new x position of the point. 
-	 * @param new_x  integer value of the new x position.
+	 * @param new_x uint16_t integer value of the new x position.
 	 */
-	void setX(T newX){
-		x = newX;
+	void Point::setX(uint16_t new_x) {
+		x = new_x;
 	}
 
 	/**
 	 * @brief Sets the new y position of the point.
-	 * @param new_y integer value of the new y position.
+	 * @param new_y uint16_t integer value of the new y position.
 	 */
-	void setY(T newY){
-		y = newY;
+	void Point::setY(uint16_t new_y) {
+		y = new_y;
 	}
 
 
@@ -104,7 +86,7 @@ public:
 	 * @param other The other point to which the distance is calculated.
 	 * @retval The euclidean distance between the current point and the specified other point.
 	 */
-	T getDistance(const Point &other) const {
+	uint16_t Point::getDistance(const Point &other) const {
 		return ceil(sqrt((x - other.getX())*(x - other.getX()) + (y - other.getY())*(y - other.getY())));
 	}
 
@@ -115,8 +97,8 @@ public:
 	 * @param other The other point to which the distance in x direction is calculated.
 	 * @retval The distance of the current point to the specified other point in x direction.
 	 */
-	T getDistanceX(const Point &other) const {
-		T distance = x - other.getX();
+	uint16_t Point::getDistanceX(const Point &other) const {
+		uint16_t distance = x - other.getX();
 		return distance > 0 ? distance : -distance;
 	}
 
@@ -127,32 +109,13 @@ public:
 	 * @param other The other point to which the distance in y direction is calculated.
 	 * @retval The absolute value of the distance of the two points in y direction.
 	 */
-	T getDistanceY(const Point &other) const {
-		T distance = y - other.getY();
+	uint16_t Point::getDistanceY(const Point &other) const {
+		uint16_t distance = y - other.getY();
 		return distance > 0 ? distance : -distance;
 	}
-
-private:
-	T x; //!< The x coordinate of the point.
-	T y; //!< The y coordinate of the point.
-};
-
-template<typename O>
-Point<O> & operator+ (const Point<O> &p1, const Point<O> &p2){
-	p1.x = p1.x + p2.x;
-	p1.y = p1.y + p2.y;
-	return p1;
-}
-
-
-template<typename O>
-bool operator== (const Point<O> &p1, const Point<O> &p2) {
-	return (p1.x == p2.x) && (p1.y == p2.y);
-}
 
 } /* namespace ELE3312 */
 
 /**
-  *@}
-  */
-#endif /* SRC_GRAPHICS_POINT_H_ */
+ *@}
+ */

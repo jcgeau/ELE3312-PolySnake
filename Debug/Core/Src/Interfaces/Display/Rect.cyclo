@@ -1,0 +1,21 @@
+../Core/Src/Interfaces/Display/Rect.cpp:25:1:ELE3312::Rect::Rect(uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:36:1:ELE3312::Rect::Rect(const ELE3312::Point&, const ELE3312::Point&)	1
+../Core/Src/Interfaces/Display/Rect.cpp:46:1:ELE3312::Rect::Rect(const ELE3312::Point&, uint16_t, uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:61:1:ELE3312::Rect::Rect(uint16_t, uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:68:1:ELE3312::Rect::Rect()	1
+../Core/Src/Interfaces/Display/Rect.cpp:78:1:ELE3312::Rect::Rect(const ELE3312::Rect&)	1
+../Core/Src/Interfaces/Display/Rect.cpp:87:8:ELE3312::Rect& ELE3312::Rect::operator=(const ELE3312::Rect&)	1
+../Core/Src/Interfaces/Display/Rect.cpp:96:1:ELE3312::Rect::~Rect()	1
+../Core/Src/Interfaces/Display/Rect.cpp:96:1:virtual ELE3312::Rect::~Rect()	1
+../Core/Src/Interfaces/Display/Rect.cpp:102:10:uint16_t ELE3312::Rect::getWidth() const	2
+../Core/Src/Interfaces/Display/Rect.cpp:112:10:uint16_t ELE3312::Rect::getHeight() const	2
+../Core/Src/Interfaces/Display/Rect.cpp:123:10:uint16_t ELE3312::Rect::getX1() const	1
+../Core/Src/Interfaces/Display/Rect.cpp:131:10:uint16_t ELE3312::Rect::getX2() const	1
+../Core/Src/Interfaces/Display/Rect.cpp:139:10:uint16_t ELE3312::Rect::getY1() const	1
+../Core/Src/Interfaces/Display/Rect.cpp:147:10:uint16_t ELE3312::Rect::getY2() const	1
+../Core/Src/Interfaces/Display/Rect.cpp:156:6:void ELE3312::Rect::setX1(uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:163:6:void ELE3312::Rect::setX2(uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:171:6:void ELE3312::Rect::setY1(uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:178:6:void ELE3312::Rect::setY2(uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:185:6:void ELE3312::Rect::setWidth(uint16_t)	1
+../Core/Src/Interfaces/Display/Rect.cpp:192:6:void ELE3312::Rect::setHeight(uint16_t)	1

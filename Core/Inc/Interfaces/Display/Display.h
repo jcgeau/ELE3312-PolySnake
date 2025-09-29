@@ -12,7 +12,7 @@
 
 #include <cstdint>
 #include <string>
-#include "Interfaces/Geometry/Rect.h"
+#include "Interfaces/Display/Rect.h"
 
 
 namespace ELE3312 {
@@ -50,11 +50,6 @@ namespace ELE3312 {
 	 */
 	class Display {
 	public:
-
-		/** @brief Destructor for the Display interface.
-		 */
-		virtual ~Display() = default;
-
 		/** @brief Clear the screen.
 		  * @details The function removes all graphical objects from the screen
 		  * and replaces them with a homogeneous color.
@@ -112,7 +107,7 @@ namespace ELE3312 {
 		  * @param [in] rect A reference to a Rect object specifying the dimensions
 		  * and position of the rectangle.
 		  */
-		virtual void drawRect(Color color, const Rect<uint16_t> &rect) = 0;
+		virtual void drawRect(Color color, const Rect &rect) = 0;
 
 		/** @brief Draws a filled rectangle on the screen.
 		  * @details The function draws a rectangle on the screen that is 
@@ -136,7 +131,7 @@ namespace ELE3312 {
 		  * @param [in] rect A const reference to a Rect object that specifies the 
 		  * dimension and position of the rectangle.
 		  */
-		virtual void fillRect(Color color, const Rect<uint16_t> &rect) = 0;
+		virtual void fillRect(Color color, const Rect &rect) = 0;
 		
 		/** @brief Draws a circle on the screen.
 		  * @details The function draws a colored circle on the screen. The center of the 
