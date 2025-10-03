@@ -1,3 +1,3 @@
-.project
-.cproject
-.mxproject
+Debug/*
+ELE3312PolySnake Debug.launch
+PolySnake.launch
