@@ -23,6 +23,7 @@
 #include "main.h"
 #include "tile.h"
 #include "MySnake.h"
+#include "Game/Game.h"
 #include <cpp_main.h>
 #include <NucleoImp/Display/ILI9341Display.h>
 #include <iostream>
@@ -32,7 +33,7 @@
 
 using namespace ELE3312;
 
-MySnake snake;
+Game snake;
 
 /** @brief main function of the game.
   * @param [in] handles A pointer to a structure with peripheral handles from the HAL.
@@ -43,7 +44,7 @@ MySnake snake;
 	 snake.setup(handles);
 	 snake.menu();
 	 std::srand(HAL_GetTick()); // seed with current time
-	 snake.generateFruits();
+	 //snake.generateFruits();
 	 snake.run();
 
 	 while(1) {

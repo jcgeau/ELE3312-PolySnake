@@ -9,10 +9,6 @@
 #include "MySnake.h"
 using namespace ELE3312;
 
-ILI9341Display MySnake::display_;
-MPU6050MotionInput MySnake::motionInput_;
-GPIOKeypad MySnake::keypad_;
-
 
 /**
  * @brief constructeur de la classe MySnake et fixer au hasard la tete du snake
@@ -36,109 +32,20 @@ MySnake::~MySnake() {
  * @param
  */
 
-void MySnake::setup(peripheral_handles *handles){
+void MySnake::setup(ILI9341Display *display){
 
-	this->handles_ = handles;
-	display_.setup(handles->hspi_tft);
-	motionInput_.setup(handles->hi2c);
-	keypad_.setup(handles->gpio_keypad);
-
-	display_.clearScreen();
-	display_.drawString(0, 0, "2212198, 2285559", Color::WHITE);
-
-	SystemCoreClockUpdate();
-	printf("SystemCoreClock = %lu Hz\n", SystemCoreClock);
-}
-
-
-/**
- * @brief interface graphique du menu et la proposition de choix en le mode gyro ou clavier.
- * @param
- */
-void MySnake::menu(){
-	display_.clearScreen();
-	display_.drawString(0, 0, "2212198 & 2285559", Color::WHITE);
-	display_.drawString(110, 170, "Keypad: 1 \n Gyro: 3", Color::WHITE);
-
-	while(mode_ == controlMode::INPUT){
-		keypad_.update();
-		switch(keypad_.getFirstKeyPressed()){
-
-			   case KeyCode::ONE:
-				   mode_ = controlMode::KEYPAD;
-				   break;
-
-			   case KeyCode::THREE:
-				   mode_ = controlMode::GYRO;
-				   break;
-
-			   default:
-				   break;
-		}
-	}
-}
-
-
-/**
- * @brief permet le déroulement du jeu. Met à jour le clavier ou l'accelerometre à chaque 1ms.
- * 		  permet aussi l'évolution des états des objets et du graphique du jeu.
- * @param
- */
-void MySnake::run(){
 
 	snake_[1].x = 10 * (std::rand() % 24);
 	snake_[1].y = 10 * (std::rand() % 32);
 	snake_[1].id = tileType::SNAKE_HEAD;
 
-	volatile int delay = 0;
-	display_.clearScreen();
-	display_.drawString(0, 0, "2212198 & 2285559", Color::WHITE);
-
-	while(1){
-
-
-	switch(mode_){
-	case controlMode::KEYPAD:
-		keypad_.update();
-		break;
-	case controlMode::GYRO:
-		motionInput_.update();
-		break;
-	default:
-		break;
-	}
-
-	HAL_Delay(1);
-	delay++;
-
-	if (delay == snakeSpeed_) {
-
-		displayFruits(); // afficher les fruits
-	    // Vérifie si le serpent mange un fruit
-	    bool eat = checkEatFruit();
-	    move(eat);
-
-
-	    // direction selon le mode
-	    switch(mode_){
-	        case controlMode::KEYPAD:
-	            turnKeypad();
-	            break;
-	        case controlMode::GYRO:
-	            turnGyro(motionInput_.getX(), motionInput_.getY());
-	            break;
-
-	        default:
-	        	break;
-	    }
-
-	    // displaySnake();
-	    delay = 0;
-
-	    HAL_Delay(50);
-	}
+	display_ = display;
 
 }
+
+
+int MySnake::getSpeedDelay(){
+	return snakeSpeed_;
 }
 
 /**
@@ -153,22 +60,6 @@ void MySnake::setSnakeTile(int index, int x, int y, tileType id){
 
 }
 
-/**
- * @brief affiche le snake sur le damier
- * @param
- */
-void MySnake::displaySnake(){
-
-	snake_[head_].disp(display_);
-
-	for(int i = tail_; i != head_;){
-
-		snake_[i].disp(display_);
-
-		i = (i >= 99) ? 0 : (i + 1); // if i >= 99, i = 0 else i++
-	}
-
-}
 
 /**
  * @brief Déplace le serpent d'une case.
@@ -181,7 +72,7 @@ void MySnake::move(int eat){
 	int old_y = snake_[head_].y;
 	snake_[head_].id = tileType::SNAKE_BODY;
 
-	snake_[head_].disp(display_);
+	snake_[head_].disp(*display_);
 
 	head_ = ( head_ >= 99) ? 0 : (head_ + 1);
 
@@ -206,13 +97,13 @@ void MySnake::move(int eat){
 			break;
 	}
 
-	snake_[head_].disp(display_);
-	snake_[tail_].erase(display_);
+	snake_[head_].disp(*display_);
+	snake_[tail_].erase(*display_);
 
 	if(!eat)
 		tail_ = ( tail_ >= 99) ? 0 : (tail_ + 1);
 
-	snake_[tail_].disp(display_);
+	snake_[tail_].disp(*display_);
 }
 
 /**
@@ -250,10 +141,9 @@ void MySnake::turn(bool turnDirection){
  * De plus, avec les touches 2 et 5 ont controles, l'accélération et la déccélation.
  *  * @param
  */
-void MySnake::turnKeypad() {
-    if (keypad_.isAnnyKeyPressed()) {
+void MySnake::turnKeypad(KeyCode FirstKey) {
 
-        switch (keypad_.getFirstKeyPressed()) {
+        switch (FirstKey) {
             case KeyCode::FOUR: // gauche
                 turn(LEFT);
                 break;
@@ -269,7 +159,6 @@ void MySnake::turnKeypad() {
             default:
             	break;
         }
-    }
 }
 
 template<typename T>
@@ -332,7 +221,7 @@ void MySnake::generateFruits() { //2285559
  */
 void MySnake::displayFruits() { //2285559
     for (int i = 0; i < fruitCount_; i++) {
-        fruits_[i].disp(display_);
+        fruits_[i].disp(*display_);
     }
 }
 

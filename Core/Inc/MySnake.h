@@ -31,25 +31,21 @@ enum class direction {
 	EAST
 };
 
-enum class controlMode{
-	INPUT,
-	KEYPAD,
-	GYRO
-};
-
 
 class MySnake {
 public:
 	MySnake();
 	virtual ~MySnake();
-	void setup(peripheral_handles *handles);
-	void menu();
-	void run();
+	void setup(ILI9341Display *display);
+
+	int getSpeedDelay();
+
+
 	void setSnakeTile(int index, int x, int y, tileType id);
 	void displaySnake();
 	void move(int eat);
 	void turn(bool turnDirection);
-	void turnKeypad();
+	void turnKeypad(KeyCode FirstKey);
 	void turnGyro(float x, float y);
 	void generateFruits();
 	void displayFruits();
@@ -58,20 +54,13 @@ public:
 	direction turnRelative(bool turnLeft);
 private:
 
-	peripheral_handles *handles_ = nullptr;
-
-	static ILI9341Display display_;
-	static MPU6050MotionInput motionInput_;
-	static GPIOKeypad keypad_;
-
+	ILI9341Display *display_ = nullptr;
 
 	int snakeSpeed_{200};
 	tile snake_[100];
 	int head_{1};
 	int tail_{0};
 	direction direction_{direction::NORTH};
-	controlMode mode_{controlMode::INPUT};
-
 
 	tile fruits_[10]; // 10 fruits maximum
 	int fruitCount_{10};
