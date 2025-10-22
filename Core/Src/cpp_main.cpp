@@ -46,7 +46,7 @@ Game snake;
 	 std::srand(HAL_GetTick()); // seed with current time
 	 //snake.generateFruits();
 	 snake.run();
-
+	 snake.gameOver();
 	 while(1) {
 		 //Your infinite CPP loop
 	 }

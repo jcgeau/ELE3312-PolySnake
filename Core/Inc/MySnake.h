@@ -36,30 +36,38 @@ class MySnake {
 public:
 	MySnake();
 	virtual ~MySnake();
+
 	void setup(ILI9341Display *display);
+	void init();
 
 	int getSpeedDelay();
 
-
 	void setSnakeTile(int index, int x, int y, tileType id);
-	void displaySnake();
-	void move(int eat);
+
+	void move(bool eat);
 	void turn(bool turnDirection);
+
 	void turnKeypad(KeyCode FirstKey);
 	void turnGyro(float x, float y);
+
 	void generateFruits();
 	void displayFruits();
 	bool checkEatFruit();
 
+	bool checkColision();
+
 	direction turnRelative(bool turnLeft);
+
 private:
 
 	ILI9341Display *display_ = nullptr;
 
-	int snakeSpeed_{200};
 	tile snake_[100];
+
 	int head_{1};
 	int tail_{0};
+
+	int snakeSpeed_{200};
 	direction direction_{direction::NORTH};
 
 	tile fruits_[10]; // 10 fruits maximum

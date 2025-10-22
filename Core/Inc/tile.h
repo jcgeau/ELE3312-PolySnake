@@ -29,6 +29,7 @@ enum class tileType {
 
 
 struct tile {
+
 	uint16_t x; // horizontal position
 	uint16_t y; // vertical position
 	tileType id; // corresponding tile to display

@@ -2,7 +2,8 @@
  * Game.h
  *
  *  Created on: Oct 22, 2025
- *      Author: jcgauthier
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
  */
 
 #ifndef SRC_GAME_GAME_H_
@@ -37,6 +38,7 @@ public:
 	void setup(peripheral_handles *handles);
 	void menu();
 	void run();
+	void gameOver();
 
 
 private:

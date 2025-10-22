@@ -16,15 +16,11 @@ using namespace ELE3312;
  */
 
 MySnake::MySnake() {
-	// TODO Auto-generated constructor stub
-
-
 }
 
 
 
 MySnake::~MySnake() {
-	// TODO Auto-generated destructor stub
 }
 
 /**
@@ -33,14 +29,13 @@ MySnake::~MySnake() {
  */
 
 void MySnake::setup(ILI9341Display *display){
+	display_ = display;
+}
 
-
+void MySnake::init(){
 	snake_[1].x = 10 * (std::rand() % 24);
 	snake_[1].y = 10 * (std::rand() % 32);
 	snake_[1].id = tileType::SNAKE_HEAD;
-
-	display_ = display;
-
 }
 
 
@@ -65,7 +60,7 @@ void MySnake::setSnakeTile(int index, int x, int y, tileType id){
  * @brief Déplace le serpent d'une case.
  * @param eat Si vrai, le serpent grandit d’une unité.
  */
-void MySnake::move(int eat){
+void MySnake::move(bool eat){
 
 
 	int old_x = snake_[head_].x;
@@ -115,7 +110,6 @@ void MySnake::move(int eat){
  */
 void MySnake::turn(bool turnDirection){
 
-
 	switch (direction_) {
 	        case direction::NORTH:
 	            direction_ = turnDirection ? direction::EAST : direction::WEST;
@@ -132,8 +126,6 @@ void MySnake::turn(bool turnDirection){
 	        default:
 	        	break;
 	    }
-
-
 }
 
 /**
@@ -143,22 +135,22 @@ void MySnake::turn(bool turnDirection){
  */
 void MySnake::turnKeypad(KeyCode FirstKey) {
 
-        switch (FirstKey) {
-            case KeyCode::FOUR: // gauche
-                turn(LEFT);
-                break;
-            case KeyCode::SIX: // droite
-                turn(RIGHT);
-                break;
-            case KeyCode::TWO:
-            	snakeSpeed_ = (snakeSpeed_ >= 100) ? snakeSpeed_ - 50 : 100;
-            	break;
-            case KeyCode::FIVE:
-            	snakeSpeed_ = (snakeSpeed_ <= 300) ? snakeSpeed_ + 50 : 300;
-            	break;
-            default:
-            	break;
-        }
+	switch (FirstKey) {
+		case KeyCode::FOUR: // gauche
+			turn(LEFT);
+			break;
+		case KeyCode::SIX: // droite
+			turn(RIGHT);
+			break;
+		case KeyCode::TWO:
+			snakeSpeed_ = (snakeSpeed_ >= 100) ? snakeSpeed_ - 50 : 100;
+			break;
+		case KeyCode::FIVE:
+			snakeSpeed_ = (snakeSpeed_ <= 300) ? snakeSpeed_ + 50 : 300;
+			break;
+		default:
+			break;
+	}
 }
 
 template<typename T>
@@ -171,8 +163,6 @@ int sign(T value) {
  * @param x est la position en x du serpent et y est la position en y du serpent. La fonction modifie les variables X et Y en fonction de l'accelerometre
  */
 void MySnake::turnGyro(float x, float y){
-
-
 
 	float sensibility = 0.1f;
 
@@ -196,7 +186,6 @@ void MySnake::turnGyro(float x, float y){
 				turn(RIGHT);
 			}
 		}
-
 	}
 }
 
@@ -206,9 +195,10 @@ void MySnake::turnGyro(float x, float y){
  *  * @param
  */
 void MySnake::generateFruits() { //2285559
+
     for (int i = 0; i < fruitCount_; i++) {
-          fruits_[i].x = (std::rand() % 24) * 10;
-          fruits_[i].y = (std::rand() % 32) * 10;
+          fruits_[i].x = (std::rand() % 32) * 10;
+          fruits_[i].y = (std::rand() % 24) * 10;
           fruits_[i].id = tileType(3);
 
     }
@@ -220,6 +210,7 @@ void MySnake::generateFruits() { //2285559
  * @param
  */
 void MySnake::displayFruits() { //2285559
+
     for (int i = 0; i < fruitCount_; i++) {
         fruits_[i].disp(*display_);
     }
@@ -231,17 +222,37 @@ void MySnake::displayFruits() { //2285559
  * @param Si la tete du serpent se trouve au meme endroit que les fruits, la fonction retourne true.
  */
 bool MySnake::checkEatFruit() { //2285559
+
     for (int i = 0; i < fruitCount_; i++) {
         if (snake_[head_].x == fruits_[i].x && snake_[head_].y == fruits_[i].y) {
             // Le fruit est mangé → on le replace ailleurs
-            fruits_[i].x = (std::rand() % 24) * 10;
-            fruits_[i].y = (std::rand() % 32) * 10;
+            fruits_[i].x = (std::rand() % 32) * 10;
+            fruits_[i].y = (std::rand() % 24) * 10;
             return true;
         }
     }
     return false;
 }
 
+
+bool MySnake::checkColision(){
+
+	if(snake_[head_].x >= 320)
+		return true;
+
+	if(snake_[head_].y >= 240)
+		return true;
+
+	for(int i = tail_; i != head_;){
+		if( (snake_[head_].x == snake_[i].x) && (snake_[head_].y == snake_[i].y) )
+			return true;
+		i = (i >= 99) ? 0 : (i + 1);
+
+	}
+
+	return false;
+
+}
 
 
 

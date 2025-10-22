@@ -2,7 +2,8 @@
  * Game.cpp
  *
  *  Created on: Oct 22, 2025
- *      Author: jcgauthier
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
  */
 
 #include "Game/Game.h"
@@ -62,6 +63,7 @@ void Game::menu(){
 
 void Game::run(){
 
+	snake_.init();
 	snake_.generateFruits();
 
 	volatile int delay = 0;
@@ -108,13 +110,21 @@ void Game::run(){
 
 	    // displaySnake();
 	    delay = 0;
-
 	    HAL_Delay(50);
+
+	    if(snake_.checkColision())
+	    	break;
+
 	}
 
 }
 }
 
+void Game::gameOver(){
 
+	display_.clearScreen();
+	display_.drawString(120, 160, "GAME OVER", Color::RED);
+
+}
 
 } /* namespace ELE3312 */
