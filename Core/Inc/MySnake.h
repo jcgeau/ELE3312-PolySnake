@@ -41,21 +41,20 @@ class MySnake {
 public:
 	MySnake();
 	virtual ~MySnake();
-
 	void setup(peripheral_handles *handles);
 	void menu();
 	void run();
-
 	void setSnakeTile(int index, int x, int y, tileType id);
-
 	void displaySnake();
 	void move(int eat);
-
 	void turn(direction d);
 	direction turnKeypad();
 	direction turnGyro(float x, float y);
+	void generateFruits();
+	void displayFruits();
+	bool checkEatFruit();
 
-
+	direction turnRelative(bool turnLeft);
 private:
 
 	peripheral_handles *handles_ = nullptr;
@@ -64,13 +63,17 @@ private:
 	static MPU6050MotionInput motionInput_;
 	static GPIOKeypad keypad_;
 
+
+	int snakeSpeed_{20};
 	tile snake_[100];
 	int head_{1};
 	int tail_{0};
 	direction direction_{direction::NORTH};
 	controlMode mode_{controlMode::INPUT};
-	int snakeSpeed_{100};
 
+
+	tile fruits_[10]; // 10 fruits maximum
+	int fruitCount_{10};
 
 };
 

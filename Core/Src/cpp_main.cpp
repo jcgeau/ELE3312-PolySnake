@@ -32,38 +32,6 @@
 
 using namespace ELE3312;
 
-
-// generating random fruits and displaying them on the screen
-void generate_fruits(ILI9341Display& display, tile fruits[]){
-
-std::srand(std::time(nullptr)); // seed with current time
-int randomNumber = std::rand() % 100 + 1; // range [1, 100]
-
-int x{0};
-int y{0};
-int color{0};
-
-for(uint16_t i = 0; i < randomNumber; i++){
-
-	x = std::rand() % 24; // range [0,23]
-	y = std::rand() % 32; // range [0,31]
-
-	color = std::rand() % 2;
-
-	fruits[i].x = x*10;
-	fruits[i].y = y*10;
-
-	if(color == 0)
-		fruits[i].id = tileType::FRUIT_1;
-	else
-		fruits[i].id = tileType::FRUIT_2;
-
-	fruits[i].disp(display);
-
-}
-}
-
-
 MySnake snake;
 
 /** @brief main function of the game.
@@ -71,8 +39,11 @@ MySnake snake;
   */
  void cpp_main(peripheral_handles *handles) {
 
+
 	 snake.setup(handles);
 	 snake.menu();
+	 std::srand(HAL_GetTick()); // seed with current time
+	 snake.generateFruits();
 	 snake.run();
 
 	 while(1) {
