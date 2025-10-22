@@ -23,6 +23,7 @@
 
 namespace ELE3312 {
 
+
 enum class direction {
 	NORTH,
 	WEST,
@@ -47,9 +48,9 @@ public:
 	void setSnakeTile(int index, int x, int y, tileType id);
 	void displaySnake();
 	void move(int eat);
-	void turn(direction d);
-	direction turnKeypad();
-	direction turnGyro(float x, float y);
+	void turn(bool turnDirection);
+	void turnKeypad();
+	void turnGyro(float x, float y);
 	void generateFruits();
 	void displayFruits();
 	bool checkEatFruit();
@@ -64,7 +65,7 @@ private:
 	static GPIOKeypad keypad_;
 
 
-	int snakeSpeed_{20};
+	int snakeSpeed_{200};
 	tile snake_[100];
 	int head_{1};
 	int tail_{0};
@@ -74,6 +75,9 @@ private:
 
 	tile fruits_[10]; // 10 fruits maximum
 	int fruitCount_{10};
+
+	static constexpr bool RIGHT{false};
+	static constexpr bool LEFT{true};
 
 };
 
