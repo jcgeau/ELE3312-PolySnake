@@ -33,23 +33,23 @@
 
 using namespace ELE3312;
 
-Game snake;
+Game snakeGame;
 
 /** @brief main function of the game.
   * @param [in] handles A pointer to a structure with peripheral handles from the HAL.
   */
  void cpp_main(peripheral_handles *handles) {
 
+	 snakeGame.setup(handles);
+	 snakeGame.menu();
 
-	 snake.setup(handles);
-	 snake.menu();
-	 std::srand(HAL_GetTick()); // seed with current time
-	 //snake.generateFruits();
-	 snake.run();
-	 snake.gameOver();
-	 while(1) {
-		 //Your infinite CPP loop
-	 }
+	 std::srand(HAL_GetTick()); // seed with current time, should be pseudo-random after running snakeGame.menu()
+   
+	 snakeGame.run();
+	 snakeGame.gameOver();
+
+	 while(1) {}
+
 }
 
 

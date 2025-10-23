@@ -41,6 +41,7 @@ public:
 	void init();
 
 	int getSpeedDelay();
+	tile getHeadTile();
 
 	void setSnakeTile(int index, int x, int y, tileType id);
 

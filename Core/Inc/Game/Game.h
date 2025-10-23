@@ -17,6 +17,7 @@
 #include "NucleoImp/MotionInput/MPU6050MotionInput.h"
 #include "cpp_main.h"
 #include "MySnake.h"
+#include "Fruits.h"
 
 
 namespace ELE3312 {
@@ -52,6 +53,7 @@ private:
 	controlMode mode_{ controlMode::INPUT };
 
 	MySnake snake_;
+	Fruits fruits_;
 
 
 };

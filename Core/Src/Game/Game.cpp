@@ -14,15 +14,15 @@ ILI9341Display Game::display_;
 MPU6050MotionInput Game::motionInput_;
 GPIOKeypad Game::keypad_;
 
-Game::Game() {
-	// TODO Auto-generated constructor stub
+Game::Game() {}
 
-}
+Game::~Game() {}
 
-Game::~Game() {
-	// TODO Auto-generated destructor stub
-}
-
+/**
+ * @brief initialise tout les périphériques pour nous permettres de les utiliser par la suite
+ * 
+ * @param handles 
+ */
 void Game::setup(peripheral_handles *handles){
 
 	this->handles_ = handles;
@@ -30,12 +30,20 @@ void Game::setup(peripheral_handles *handles){
 	motionInput_.setup(handles->hi2c);
 	keypad_.setup(handles->gpio_keypad);
 	snake_.setup(&display_);
+	fruits_.setup(&display_);
+
 
 	display_.clearScreen();
 	display_.drawString(0, 0, "2212198, 2285559", Color::WHITE);
 
 }
 
+/**
+ * @brief affiche un menu ou on peut sélectionner le type de saisie pour contrôler le serpent
+ * 
+ * @param mode_ KEYPAD: on controle le serpent avec le clavier, GYRO: on contrôle le serpent avec l'accéléromètre
+ * 
+ */
 void Game::menu(){
 
 	display_.clearScreen();
@@ -61,10 +69,14 @@ void Game::menu(){
 
 }
 
+/**
+ * @brief affiche la partie du jeux de snake, ou on peut bouger le serpent, manger des fruits et perdre la partie
+ * 
+ */
 void Game::run(){
 
 	snake_.init();
-	snake_.generateFruits();
+	fruits_.generateFruits();
 
 	volatile int delay = 0;
 
@@ -73,7 +85,7 @@ void Game::run(){
 
 	while(1){
 
-
+	// update du périphérique selon le mode de saisie
 	switch(mode_){
 	case controlMode::KEYPAD:
 		keypad_.update();
@@ -90,8 +102,8 @@ void Game::run(){
 
 	if (delay >= snake_.getSpeedDelay() ) {
 
-		snake_.displayFruits();
-	    snake_.move(snake_.checkEatFruit());
+		fruits_.displayFruits();
+	    snake_.move(fruits_.checkEatFruit(snake_.getHeadTile()));
 
 
 	    // direction selon le mode
@@ -112,7 +124,7 @@ void Game::run(){
 	    delay = 0;
 	    HAL_Delay(50);
 
-	    if(snake_.checkColision())
+	    if(snake_.checkColision()) // sortie de la méthode run() quand il y a une colision
 	    	break;
 
 	}
@@ -120,6 +132,10 @@ void Game::run(){
 }
 }
 
+/**
+ * @brief affiche l'écran de "game over"
+ * 
+ */
 void Game::gameOver(){
 
 	display_.clearScreen();

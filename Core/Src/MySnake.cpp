@@ -9,43 +9,55 @@
 #include "MySnake.h"
 using namespace ELE3312;
 
+MySnake::MySnake() {}
+
+MySnake::~MySnake() {}
+
 
 /**
- * @brief constructeur de la classe MySnake et fixer au hasard la tete du snake
- * @param
+ * @brief assigne l'addresse de l'objet display au snake
+ * 
+ * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-
-MySnake::MySnake() {
-}
-
-
-
-MySnake::~MySnake() {
-}
-
-/**
- * @brief initialisation du graphique du jeu, de l'accelerometre, du clavier. (niveau plus bas ex:GPIO, i2c, etc)
- * @param
- */
-
 void MySnake::setup(ILI9341Display *display){
 	display_ = display;
 }
 
+/**
+ * @brief initialise la position initiale du serpent de manière aléatoire sur l'écran
+ * 
+ */
 void MySnake::init(){
 	snake_[1].x = 10 * (std::rand() % 24);
 	snake_[1].y = 10 * (std::rand() % 32);
 	snake_[1].id = tileType::SNAKE_HEAD;
 }
 
-
+/**
+ * @brief retourne le délai de vitesse du serpent
+ * 
+ * @return int délai de vitesse du serpent ( # d'updates / snakeSpeed[ms] )
+ */
 int MySnake::getSpeedDelay(){
 	return snakeSpeed_;
 }
 
 /**
- * @brief ecrit les position du snake en x et en y du snake et son identifiant
- * @param eat Si vrai, le serpent grandit d’une unité.
+ * @brief retourne la tuile de la tête du serpent
+ * 
+ * @return tile la tuile de la tête du serpent
+ */
+tile MySnake::getHeadTile(){
+	return snake_[head_];
+}
+
+/**
+ * @brief mettre des paramètres dans une tuile du serpent
+ * 
+ * @param index position dans le tableau de tuiles du serpent
+ * @param x position en x sur l'écran [0, 320]
+ * @param y position en y sur l'écran [0, 240]
+ * @param id détermine la couleur de la tuile 
  */
 void MySnake::setSnakeTile(int index, int x, int y, tileType id){
 
@@ -57,7 +69,9 @@ void MySnake::setSnakeTile(int index, int x, int y, tileType id){
 
 
 /**
- * @brief Déplace le serpent d'une case.
+ * @brief Déplace le serpent d'une case dans la direction courante et affiche le serpent 
+ *		  en effacant (ou non si il mange) la tuile de queue et en affichant la nouvelle position de tête
+ *
  * @param eat Si vrai, le serpent grandit d’une unité.
  */
 void MySnake::move(bool eat){
@@ -102,11 +116,9 @@ void MySnake::move(bool eat){
 }
 
 /**
- * @brief changer la position du snake sur le damier en fonction de la direction prise par le clavier
- * @param Si la direction est NORTH, la composante en y du snake diminuera de 10
- * 		  Si la direction est WEST, la composante en x du snake augmentera de 10
- * 		  Si la direction est SOUTH, la composante en y du snake augmentera de 10
- * 		  Si la direction est SOUTH, la composante en x du snake diminuera de 10
+ * @brief détermine la direction courante après un changement de direction a gauche ou a droite
+ * 
+ * @param turnDirection RIGHT = true, LEFT = false 
  */
 void MySnake::turn(bool turnDirection){
 
@@ -128,11 +140,12 @@ void MySnake::turn(bool turnDirection){
 	    }
 }
 
-/**
- * @brief determine la direction du serpent en fonction des entrées du clavier.
- * De plus, avec les touches 2 et 5 ont controles, l'accélération et la déccélation.
- *  * @param
- */
+ /**
+  * @brief Determine le changement de direction du serpent en fonction des entrées du clavier.
+  * 	   De plus, avec les touches 2 et 5 on peut controler l'accélération et la déccélation du serpent
+  * 
+  * @param FirstKey la première touche qui est appuyé sur le clavier
+  */
 void MySnake::turnKeypad(KeyCode FirstKey) {
 
 	switch (FirstKey) {
@@ -153,15 +166,22 @@ void MySnake::turnKeypad(KeyCode FirstKey) {
 	}
 }
 
+/**
+ * @brief fonction template pour déterminer le signe d'une valeur signé
+ *
+ */
 template<typename T>
 int sign(T value) {
 	return ((T(0) < value) - ( value < T(0)));
 }
-
-/**
- * @brief determine la direction du serpent avec l'accelerometre
- * @param x est la position en x du serpent et y est la position en y du serpent. La fonction modifie les variables X et Y en fonction de l'accelerometre
- */
+ 
+ /**
+  * @brief Determine le changement de direction du serpent avec l'acceleromètre, on peut aussi accélérer le serpent ou le déccélérer.
+  *        Les deux paramètres sont contrôlés avec l'inclinaison de l'acceleromètre
+  * 
+  * @param x inclinaison en x du gyroscope
+  * @param y inclinaison en y du gyroscope
+  */
 void MySnake::turnGyro(float x, float y){
 
 	float sensibility = 0.1f;
@@ -189,52 +209,12 @@ void MySnake::turnGyro(float x, float y){
 	}
 }
 
-
 /**
- * @brief genere la position des fruits aleatoirement et fixe le type de fruit
- *  * @param
+ * @brief détermine si le serpent entre en colision avec son cors ou avec un des bords de l'écran
+ * 
+ * @return true le serpent est en colision
+ * @return false le serpent n'est pas en colision
  */
-void MySnake::generateFruits() { //2285559
-
-    for (int i = 0; i < fruitCount_; i++) {
-          fruits_[i].x = (std::rand() % 32) * 10;
-          fruits_[i].y = (std::rand() % 24) * 10;
-          fruits_[i].id = tileType(3);
-
-    }
-}
-
-
-/**
- * @brief affiche les fruits sur l'ecran
- * @param
- */
-void MySnake::displayFruits() { //2285559
-
-    for (int i = 0; i < fruitCount_; i++) {
-        fruits_[i].disp(*display_);
-    }
-}
-
-
-/**
- * @brief Verifie si le serpent a mange un fruit.
- * @param Si la tete du serpent se trouve au meme endroit que les fruits, la fonction retourne true.
- */
-bool MySnake::checkEatFruit() { //2285559
-
-    for (int i = 0; i < fruitCount_; i++) {
-        if (snake_[head_].x == fruits_[i].x && snake_[head_].y == fruits_[i].y) {
-            // Le fruit est mangé → on le replace ailleurs
-            fruits_[i].x = (std::rand() % 32) * 10;
-            fruits_[i].y = (std::rand() % 24) * 10;
-            return true;
-        }
-    }
-    return false;
-}
-
-
 bool MySnake::checkColision(){
 
 	if(snake_[head_].x >= 320)
