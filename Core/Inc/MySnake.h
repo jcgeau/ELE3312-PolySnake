@@ -56,6 +56,7 @@ public:
 	bool checkEatFruit();
 
 	bool checkColision();
+	bool checkColisionV2();
 
 	direction turnRelative(bool turnLeft);
 

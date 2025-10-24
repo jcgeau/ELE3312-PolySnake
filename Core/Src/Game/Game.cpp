@@ -47,7 +47,7 @@ void Game::setup(peripheral_handles *handles){
 void Game::menu(){
 
 	display_.clearScreen();
-	display_.drawString(0, 0, "2212198 & 2285559", Color::WHITE);
+	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	display_.drawString(110, 170, "Keypad: 1 \n Gyro: 3", Color::WHITE);
 
 	while(mode_ == controlMode::INPUT){
@@ -81,7 +81,7 @@ void Game::run(){
 	volatile int delay = 0;
 
 	display_.clearScreen();
-	display_.drawString(0, 0, "2212198 & 2285559", Color::WHITE);
+	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 
 	while(1){
 
@@ -97,13 +97,15 @@ void Game::run(){
 		break;
 	}
 
+	// Délai rapide pour avoir une saisie fluide
 	HAL_Delay(1);
 	delay++;
 
-	if (delay >= snake_.getSpeedDelay() ) {
+	if (delay >= snake_.getSpeedDelay() ) { // délai plus lent pour contrôler la vitesse du serpent
 
 		fruits_.displayFruits();
-	    snake_.move(fruits_.checkEatFruit(snake_.getHeadTile()));
+	    snake_.move(fruits_.checkEatFruitV2(snake_.getHeadTile())); // utilisation de la méthode checkEatFruit en assembleur
+	    fruits_.generateNewFruit();
 
 
 	    // direction selon le mode
@@ -124,7 +126,7 @@ void Game::run(){
 	    delay = 0;
 	    HAL_Delay(50);
 
-	    if(snake_.checkColision()) // sortie de la méthode run() quand il y a une colision
+	    if(snake_.checkColisionV2()) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
 	    	break;
 
 	}
@@ -139,6 +141,7 @@ void Game::run(){
 void Game::gameOver(){
 
 	display_.clearScreen();
+	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	display_.drawString(120, 160, "GAME OVER", Color::RED);
 
 }

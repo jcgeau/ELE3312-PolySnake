@@ -29,7 +29,9 @@ public:
 
 	void generateFruits();
 	void displayFruits();
+	void generateNewFruit();
 	bool checkEatFruit(tile headTile);
+	bool checkEatFruitV2(tile headTile);
 
 private:
 

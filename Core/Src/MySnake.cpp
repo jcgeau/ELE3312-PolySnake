@@ -7,7 +7,8 @@
  */
 
 #include "MySnake.h"
-using namespace ELE3312;
+
+namespace ELE3312{
 
 MySnake::MySnake() {}
 
@@ -28,8 +29,8 @@ void MySnake::setup(ILI9341Display *display){
  * 
  */
 void MySnake::init(){
-	snake_[1].x = 10 * (std::rand() % 24);
-	snake_[1].y = 10 * (std::rand() % 32);
+	snake_[1].x = 10 * (std::rand() % 32);
+	snake_[1].y = (10 * (std::rand() % 12)) + 120; // toujours initialiser le serpent dans la moitié basse de l'écran
 	snake_[1].id = tileType::SNAKE_HEAD;
 }
 
@@ -212,7 +213,7 @@ void MySnake::turnGyro(float x, float y){
 /**
  * @brief détermine si le serpent entre en colision avec son cors ou avec un des bords de l'écran
  * 
- * @return true le serpent est en colision
+ * @return true le serpent est en colision avec sa queue ou le bord
  * @return false le serpent n'est pas en colision
  */
 bool MySnake::checkColision(){
@@ -231,8 +232,26 @@ bool MySnake::checkColision(){
 	}
 
 	return false;
+}
+
+/**
+ * @brief implémentation en assembleur de la fonction checkColision
+ * 
+ */
+extern "C" bool checkColision_asm(MySnake *self);
+
+/**
+ * @brief Appel de la fonction checkColision_asm implémenté en assembleur
+ * 
+ * @return true le serpent est en colision avec sa queue ou le bord
+ * @return false le serpent n'est pas en colision
+ */
+bool MySnake::checkColisionV2() {
+    return checkColision_asm(this);
+}
 
 }
+
 
 
 
