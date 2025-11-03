@@ -41,7 +41,9 @@ Game snakeGame;
  void cpp_main(peripheral_handles *handles) {
 
 	 snakeGame.setup(handles);
-	 snakeGame.menu();
+	 snakeGame.inputMenu();
+	 HAL_Delay(1000);
+	 snakeGame.gameModeMenu();
 
 	 std::srand(HAL_GetTick()); // seed with current time, should be pseudo-random after running snakeGame.menu()
    

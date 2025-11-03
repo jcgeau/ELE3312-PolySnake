@@ -22,6 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "cpp_main.h"
+#include "stm32f4xx_hal_uart.h"
+#include <stdio.h>
+#include <stdlib.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,6 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define RX_BUFFER_SIZE 1
+#define GAME_DELAY_COUNT 20
 
 /* USER CODE END PD */
 
@@ -62,6 +67,12 @@ DMA_HandleTypeDef hdma_uart5_rx;
 DMA_HandleTypeDef hdma_uart5_tx;
 
 /* USER CODE BEGIN PV */
+uint8_t rx_buffer_USB[RX_BUFFER_SIZE];
+uint8_t rx_buffer[RX_BUFFER_SIZE];
+volatile uint32_t systick_count = 0;
+volatile uint32_t victory_screen_delay = 0;
+volatile uint16_t game_delay = 0;
+volatile uint16_t game_delay_flag = 0;
 
 /* USER CODE END PV */
 
@@ -85,7 +96,6 @@ static void MX_TIM1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /**
@@ -129,20 +139,22 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+  HAL_UART_Receive_IT(&huart2, rx_buffer_USB, RX_BUFFER_SIZE);
+  HAL_UART_Receive_IT(&huart5, rx_buffer, RX_BUFFER_SIZE);
   peripheral_handles handles = {
-  	  .hdac = &hdac,
-  	  .htim_dac = &htim4,
-  	  .hspi_tft = &hspi1,
-  	  .htim_distance = &htim2,
-  	  .htim_led = &htim1,
-  	  .hi2c = &hi2c3,
-  	  .huart = &huart5,
-  	  .debug_uart = &huart2,
-  	  .hadc = &hadc1,
-  	  .gpio_keypad = GPIOC
-    };
-
-  // Run CPP main
+	  .hdac = &hdac,
+	  .htim_dac = &htim4,
+	  .hspi_tft = &hspi1,
+	  .htim_distance = &htim2,
+	  .htim_led = &htim1,
+	  .hi2c = &hi2c3,
+	  .huart = &huart5,
+	  .debug_uart = &huart2,
+	  .hadc = &hadc1,
+	  .gpio_keypad = GPIOC
+  };
+  // Main function of the game.
   cpp_main(&handles);
 
   /* USER CODE END 2 */
@@ -152,7 +164,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -668,7 +679,8 @@ static void MX_USART2_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART2_Init 2 */
-
+  HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(USART2_IRQn);
   /* USER CODE END USART2_Init 2 */
 
 }
@@ -767,14 +779,66 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+/* ############################# Event Handlers ######################### */
+/** @brief Capture callback for a timer used to measure time difference
+  * between rising and falling edge of an digital external input signal.
+  * @param [in] htim Pointer to timer periphery handle.
+  */
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
+	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) 	{
+	  captureCallback(htim);
+	}
+}
+
+/** @brief UART receive complete callback. Here we read the incoming message byte by byte. 
+  * @param [in] huart Pointer to the UART interface handle.
+  */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+  handleUART(huart->Instance->DR);
+  if (huart->Instance == USART2) {  /* Check which UART triggered the interrupt */
+    /* Start the next reception */
+    HAL_UART_Receive_IT(huart, rx_buffer_USB, RX_BUFFER_SIZE);
+  }
+  if(huart->Instance == UART5){
+    /* Start the next reception */
+    HAL_UART_Receive_IT(huart, rx_buffer, RX_BUFFER_SIZE);
+  }
+}
+
 /** @brief Systick callback.
   */
+void HAL_SYSTICK_Callback(){
+  systick_count += 1;
+  if (game_delay ==  0) {
+	  game_delay = GAME_DELAY_COUNT;
+	  game_delay_flag = 1;
+  }
+  game_delay--;
 
-// Prevent warning: _getentropy is not implemented
+  if (victory_screen_delay > 0) {
+	  victory_screen_delay--;
+  }
+}
+
+// Prevent warning: _getentropy is not implemented 
 int getentropy(void *buffer, size_t length)
 {
   return -1;
 }
+
+/* Enable redirection of printf to UART */
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+
+    PUTCHAR_PROTOTYPE
+    {
+        HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY); /* Replace huartX with your UART handle */
+        return ch;
+    }
 /* USER CODE END 4 */
 
 /**

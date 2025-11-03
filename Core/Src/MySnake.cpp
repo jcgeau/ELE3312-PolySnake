@@ -20,8 +20,9 @@ MySnake::~MySnake() {}
  * 
  * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-void MySnake::setup(ILI9341Display *display){
+void MySnake::setup(ILI9341Display *display, Communication *comm){
 	display_ = display;
+	comm_ = comm;
 }
 
 /**
@@ -70,7 +71,7 @@ void MySnake::setSnakeTile(int index, int x, int y, tileType id){
 
 
 /**
- * @brief Déplace le serpent d'une case dans la direction courante et affiche le serpent 
+ * @brief Déplace le serpent d'une case dans la Direction courante et affiche le serpent
  *		  en effacant (ou non si il mange) la tuile de queue et en affichant la nouvelle position de tête
  *
  * @param eat Si vrai, le serpent grandit d’une unité.
@@ -86,20 +87,20 @@ void MySnake::move(bool eat){
 
 	head_ = ( head_ >= 99) ? 0 : (head_ + 1);
 
-	switch(direction_){
-		case direction::NORTH:
+	switch(Direction_){
+		case Direction::NORTH:
 			setSnakeTile(head_, old_x, (old_y - 10), tileType::SNAKE_HEAD);
 			break;
 
-		case direction::WEST:
+		case Direction::WEST:
 			setSnakeTile(head_, (old_x + 10), old_y, tileType::SNAKE_HEAD);
 			break;
 
-		case direction::SOUTH:
+		case Direction::SOUTH:
 			setSnakeTile(head_, old_x, (old_y +10), tileType::SNAKE_HEAD);
 			break;
 
-		case direction::EAST:
+		case Direction::EAST:
 			setSnakeTile(head_, (old_x - 10) , old_y , tileType::SNAKE_HEAD);
 			break;
 
@@ -117,24 +118,24 @@ void MySnake::move(bool eat){
 }
 
 /**
- * @brief détermine la direction courante après un changement de direction a gauche ou a droite
+ * @brief détermine la Direction courante après un changement de Direction a gauche ou a droite
  * 
  * @param turnDirection RIGHT = true, LEFT = false 
  */
 void MySnake::turn(bool turnDirection){
 
-	switch (direction_) {
-	        case direction::NORTH:
-	            direction_ = turnDirection ? direction::EAST : direction::WEST;
+	switch (Direction_) {
+	        case Direction::NORTH:
+	            Direction_ = turnDirection ? Direction::EAST : Direction::WEST;
 	            break;
-	        case direction::SOUTH:
-	        	direction_ = turnDirection ? direction::WEST : direction::EAST;
+	        case Direction::SOUTH:
+	        	Direction_ = turnDirection ? Direction::WEST : Direction::EAST;
 	        	break;
-	        case direction::EAST:
-	        	direction_ = turnDirection ? direction::SOUTH : direction::NORTH;
+	        case Direction::EAST:
+	        	Direction_ = turnDirection ? Direction::SOUTH : Direction::NORTH;
 	        	break;
-	        case direction::WEST:
-	        	direction_ = turnDirection ? direction::NORTH : direction::SOUTH;
+	        case Direction::WEST:
+	        	Direction_ = turnDirection ? Direction::NORTH : Direction::SOUTH;
 	        	break;
 	        default:
 	        	break;
@@ -142,7 +143,7 @@ void MySnake::turn(bool turnDirection){
 }
 
  /**
-  * @brief Determine le changement de direction du serpent en fonction des entrées du clavier.
+  * @brief Determine le changement de Direction du serpent en fonction des entrées du clavier.
   * 	   De plus, avec les touches 2 et 5 on peut controler l'accélération et la déccélation du serpent
   * 
   * @param FirstKey la première touche qui est appuyé sur le clavier
@@ -177,7 +178,7 @@ int sign(T value) {
 }
  
  /**
-  * @brief Determine le changement de direction du serpent avec l'acceleromètre, on peut aussi accélérer le serpent ou le déccélérer.
+  * @brief Determine le changement de Direction du serpent avec l'acceleromètre, on peut aussi accélérer le serpent ou le déccélérer.
   *        Les deux paramètres sont contrôlés avec l'inclinaison de l'acceleromètre
   * 
   * @param x inclinaison en x du gyroscope

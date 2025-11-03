@@ -15,6 +15,7 @@
 #include "Interfaces/Keypad/Keypad.h"
 #include "NucleoImp/Keypad/GPIOKeypad.h"
 #include "NucleoImp/MotionInput/MPU6050MotionInput.h"
+#include "Interfaces/Communication/Communication.h"
 #include "cpp_main.h"
 
 #include <cstdlib>
@@ -24,7 +25,7 @@
 namespace ELE3312 {
 
 
-enum class direction {
+enum class Direction {
 	NORTH,
 	WEST,
 	SOUTH,
@@ -37,7 +38,7 @@ public:
 	MySnake();
 	virtual ~MySnake();
 
-	void setup(ILI9341Display *display);
+	void setup(ILI9341Display *display, Communication *comm);
 	void init();
 
 	int getSpeedDelay();
@@ -58,11 +59,12 @@ public:
 	bool checkColision();
 	bool checkColisionV2();
 
-	direction turnRelative(bool turnLeft);
+	Direction turnRelative(bool turnLeft);
 
 private:
 
 	ILI9341Display *display_ = nullptr;
+	Communication *comm_ = nullptr;
 
 	tile snake_[100];
 
@@ -70,7 +72,7 @@ private:
 	int tail_{0};
 
 	int snakeSpeed_{200};
-	direction direction_{direction::NORTH};
+	Direction Direction_{Direction::NORTH};
 
 	tile fruits_[10]; // 10 fruits maximum
 	int fruitCount_{10};

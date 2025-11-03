@@ -7,12 +7,22 @@
  */
 
 #include "Game/Game.h"
+#include "NucleoImp/SerialCom/SerialFrame.h"
 
 namespace ELE3312 {
 
 ILI9341Display Game::display_;
 MPU6050MotionInput Game::motionInput_;
 GPIOKeypad Game::keypad_;
+UART Game::uart;
+
+Menu Game::menu_;
+SnakeGame Game::snakeGame_;
+VictoryScreen Game::victoryScreen_;
+
+// uart
+Ringbuffer Game::uartBuffer;
+uint8_t Game::buff[BUFFER_SIZE]= {0};
 
 Game::Game() {}
 
@@ -29,8 +39,14 @@ void Game::setup(peripheral_handles *handles){
 	display_.setup(handles->hspi_tft);
 	motionInput_.setup(handles->hi2c);
 	keypad_.setup(handles->gpio_keypad);
-	snake_.setup(&display_);
+	uart.setup(handles->huart, 5);
+
+	menu_.setup(&display_, &keypad_, &uart);
+
+	snake_.setup(&display_, &uart);
+	snakeOpp_.setup(&display_, &uart);
 	fruits_.setup(&display_);
+	uartBuffer.setup();
 
 
 	display_.clearScreen();
@@ -41,25 +57,50 @@ void Game::setup(peripheral_handles *handles){
 /**
  * @brief affiche un menu ou on peut sélectionner le type de saisie pour contrôler le serpent
  * 
- * @param mode_ KEYPAD: on controle le serpent avec le clavier, GYRO: on contrôle le serpent avec l'accéléromètre
+ * @param input_ KEYPAD: on controle le serpent avec le clavier, GYRO: on contrôle le serpent avec l'accéléromètre
  * 
  */
-void Game::menu(){
+void Game::inputMenu(){
 
 	display_.clearScreen();
 	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	display_.drawString(110, 170, "Keypad: 1 \n Gyro: 3", Color::WHITE);
 
-	while(mode_ == controlMode::INPUT){
+	while(input_ == ControlMode::INPUT){
 		keypad_.update();
 		switch(keypad_.getFirstKeyPressed()){
 
 			   case KeyCode::ONE:
-				   mode_ = controlMode::KEYPAD;
+				   input_ = ControlMode::KEYPAD;
 				   break;
 
 			   case KeyCode::THREE:
-				   mode_ = controlMode::GYRO;
+				   input_ = ControlMode::GYRO;
+				   break;
+
+			   default:
+				   break;
+		}
+	}
+
+}
+
+void Game::gameModeMenu(){
+
+	display_.clearScreen();
+	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+	display_.drawString(110, 170, "1 joueur: 1 \n 2 joueurs: 3", Color::WHITE);
+
+	while(input_ == ControlMode::INPUT){
+		keypad_.update();
+		switch(keypad_.getFirstKeyPressed()){
+
+			   case KeyCode::ONE:
+
+				   break;
+
+			   case KeyCode::THREE:
+
 				   break;
 
 			   default:
@@ -75,31 +116,85 @@ void Game::menu(){
  */
 void Game::run(){
 
-	snake_.init();
-	fruits_.generateFruits();
-
+	SerialFrame frame;
 	volatile int delay = 0;
 
-	display_.clearScreen();
-	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+	while(1){
+		// Check UART and dispatch messages
+		if (uartBuffer.read(buff, BUFFER_SIZE) != 0) {
+			frame.setMessage(buff, BUFFER_SIZE);
+
+			switch (frame.getMessageType()){
+				case MessageType::PlayerChoice:
+					if (state_ == GameState::Menu) { // Only dispatch messages for the current state
+						//menu_.handleRemote(frame.getPlayerChoiceMessage());
+					}
+					break;
+				case MessageType::Position :
+					if (state_ == GameState::SnakeGame) { // Only dispatch messages for the current state
+						// labyrinth.handleRemote(frame.getLabyrinthMessage());
+					}
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		// Handle user input
+		switch(state_){
+			case GameState::InputMenu:
+				keypad_.update();
+				break;
+			case GameState::SnakeGame:
+				break;
+			case GameState::VictoryScreen:
+				break;
+		}
+
+
+		HAL_Delay(1);
+		delay++;
+
+		if(delay > 100){
+
+			switch(state_){
+				case GameState::InputMenu:
+					if(menu_.run(&input_) )
+						state_ = GameState::SnakeGame;
+
+					break;
+
+				case GameState::SnakeGame:
+					if (snakeGame_.run() )
+						state_ = GameState::VictoryScreen;
+
+					break;
+			}
+
+			delay = 0;
+		}
+	}
+
+
+
+
+	/**
 
 	while(1){
 
+
 	// update du périphérique selon le mode de saisie
-	switch(mode_){
-	case controlMode::KEYPAD:
+	switch(input_){
+	case ControlMode::KEYPAD:
 		keypad_.update();
 		break;
-	case controlMode::GYRO:
+	case ControlMode::GYRO:
 		motionInput_.update();
 		break;
 	default:
 		break;
 	}
-
-	// Délai rapide pour avoir une saisie fluide
-	HAL_Delay(1);
-	delay++;
 
 	if (delay >= snake_.getSpeedDelay() ) { // délai plus lent pour contrôler la vitesse du serpent
 
@@ -109,12 +204,12 @@ void Game::run(){
 
 
 	    // direction selon le mode
-	    switch(mode_){
-	        case controlMode::KEYPAD:
+	    switch(input_){
+	        case ControlMode::KEYPAD:
 	        	if (keypad_.isAnnyKeyPressed())
 	        		snake_.turnKeypad(keypad_.getFirstKeyPressed());
 	            break;
-	        case controlMode::GYRO:
+	        case ControlMode::GYRO:
 	            snake_.turnGyro(motionInput_.getX(), motionInput_.getY());
 	            break;
 
@@ -130,9 +225,9 @@ void Game::run(){
 	    	break;
 
 	}
+	**/
+}
 
-}
-}
 
 /**
  * @brief affiche l'écran de "game over"
