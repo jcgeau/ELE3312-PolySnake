@@ -36,6 +36,7 @@ public:
 	bool choiceInput();
 	bool choiceMode();
 	// void handleRemote(PlayerChoiceMessage msg);
+	void handleRemote();
 private:
 	void initialize();
 	Display *disp {nullptr};
