@@ -13,9 +13,7 @@
 #define SERIALFRAME_INCLUDE_GUARD
 
 #include "Interfaces/Communication/Message.h"
-#include "Game/ComMessages/PlayerChoiceMessage.h"
-#include "Game/ComMessages/LabyrinthMessage.h"
-#include "Game/ComMessages/CombatMessage.h"
+#include "Game/ComMessages/CommTypeMessage.h"
 #include <memory>
 #include <tuple>
 
@@ -31,9 +29,8 @@ namespace ELE3312 {
 			void setup(uint8_t *p_encodeBuffer, size_t encodeSize, uint8_t *p_tempBuffer, size_t outputSize); 
 			// Getters
 			std::tuple<uint8_t*, size_t> getByteArray();
-			LabyrinthMessage getLabyrinthMessage();
-			PlayerChoiceMessage getPlayerChoiceMessage();
-			CombatMessage getCombatMessage();
+			CommTypeMessage getCommTypeMessage();
+
 			MessageType getMessageType();
 
 			// Setters

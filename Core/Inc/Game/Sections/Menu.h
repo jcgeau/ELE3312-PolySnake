@@ -11,17 +11,17 @@
 #include "Interfaces/Display/Display.h"
 #include "Interfaces/Keypad/Keypad.h"
 #include "Interfaces/Communication/Communication.h"
-#include "Game/Game.h"
+#include "Game/ComMessages/CommTypeMessage.h"
 // #include "Game/ComMessages/PlayerChoiceMessage.h"
 #include <memory>
 
 namespace ELE3312 {
 
-	/** @brief Represents the different states of the menu phase of the game.
-	  */
-	enum class MenuState {
-		Initialization, Run
-	};
+/** @brief Represents the different states of the menu phase of the game.
+  */
+enum class MenuState {
+	Initialization, Run
+};
 
 /** @brief The Menu class represents the menu that is displayed at the beginning of the game
   * where the player chooses it's game character (PacMan or Ghost).
@@ -32,7 +32,7 @@ public:
 	void setup(Display *disp, Keypad *keypad, Communication *comm);
 	virtual ~Menu() = default;
 
-	bool run(ControlMode *input);
+	bool run(CommType *input);
 	bool choiceInput();
 	bool choiceMode();
 	// void handleRemote(PlayerChoiceMessage msg);

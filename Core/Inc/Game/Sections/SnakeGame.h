@@ -8,14 +8,49 @@
 #ifndef SRC_GAME_SECTIONS_SNAKEGAME_H_
 #define SRC_GAME_SECTIONS_SNAKEGAME_H_
 
+#include "Interfaces/MotionInput/MotionInput.h"
+#include "Interfaces/Display/Display.h"
+#include "Interfaces/Communication/Communication.h"
+//TODO #include "Game/ComMessages/LabyrinthMessage.h"
+#include "Game/ComMessages/CommTypeMessage.h"
+#include "MySnake.h"
+#include "Fruits.h"
+#include <memory>
+#include <vector>
+
 namespace ELE3312 {
+
+
+enum class SnakeGameState {
+	Initialization, Run
+};
+
 
 class SnakeGame {
 public:
 	SnakeGame();
 	virtual ~SnakeGame();
+	void setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm);
 
-	void run();
+	bool run(CommType commType);
+	//TODO void handleRemote(LabyrinthMessage msg);
+
+private:
+	Display *disp = nullptr;
+	MotionInput *gyro = nullptr;
+	Communication *comm = nullptr;
+	Keypad *keypad = nullptr;
+
+	CommType commType = CommType::Unknown;
+	MySnake localSnake;
+	MySnake remoteSnake;
+
+	bool opponentEncountered; //!< Indicates that the opponent was encountered.
+	SnakeGameState state = SnakeGameState::Initialization;
+
+
+	void initialize();
+	bool updatePlayerPosition(float x, float y);
 };
 
 } /* namespace ELE3312 */

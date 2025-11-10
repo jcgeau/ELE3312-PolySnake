@@ -38,11 +38,13 @@ public:
 	MySnake();
 	virtual ~MySnake();
 
-	void setup(ILI9341Display *display, Communication *comm);
-	void init();
+	void setup(Display *display, Communication *comm);
+	void init1();
+	void init2();
 
 	int getSpeedDelay();
 	tile getHeadTile();
+	Direction getDirection();
 
 	void setSnakeTile(int index, int x, int y, tileType id);
 
@@ -63,7 +65,7 @@ public:
 
 private:
 
-	ILI9341Display *display_ = nullptr;
+	Display *display_ = nullptr;
 	Communication *comm_ = nullptr;
 
 	tile snake_[100];
@@ -72,7 +74,7 @@ private:
 	int tail_{0};
 
 	int snakeSpeed_{200};
-	Direction Direction_{Direction::NORTH};
+	Direction direction_{Direction::NORTH};
 
 	tile fruits_[10]; // 10 fruits maximum
 	int fruitCount_{10};

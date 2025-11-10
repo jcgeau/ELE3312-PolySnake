@@ -51,12 +51,12 @@ struct tile {
 	};
 
 	// method to display a single tile
-	void disp(ILI9341Display& display){
-		display.fillRect( this->idColor(this->id) , this->x , this->y , tileWidth , tileHeight );
+	void disp(Display* display){
+		display->fillRect( this->idColor(this->id) , this->x , this->y , tileWidth , tileHeight );
 	}
 
-	void erase(ILI9341Display& display){
-		display.fillRect( Color::BLACK , this->x , this->y , tileWidth , tileHeight );
+	void erase(Display* display){
+		display->fillRect( Color::BLACK , this->x , this->y , tileWidth , tileHeight );
 	}
 
 };

@@ -25,7 +25,7 @@ public:
 	Fruits();
 	virtual ~Fruits();
 
-	void setup(ILI9341Display *display);
+	void setup(Display *display);
 
 	void generateFruits();
 	void displayFruits();
@@ -35,7 +35,7 @@ public:
 
 private:
 
-	ILI9341Display *display_ = nullptr;
+	Display *display_ = nullptr;
 
 	tile fruits_[100]; // 10 fruits maximum
 	int fruitCount_{10};

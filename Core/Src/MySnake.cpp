@@ -20,7 +20,7 @@ MySnake::~MySnake() {}
  * 
  * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-void MySnake::setup(ILI9341Display *display, Communication *comm){
+void MySnake::setup(Display *display, Communication *comm){
 	display_ = display;
 	comm_ = comm;
 }
@@ -29,10 +29,22 @@ void MySnake::setup(ILI9341Display *display, Communication *comm){
  * @brief initialise la position initiale du serpent de manière aléatoire sur l'écran
  * 
  */
-void MySnake::init(){
+void MySnake::init1(){
 	snake_[1].x = 10 * (std::rand() % 32);
 	snake_[1].y = (10 * (std::rand() % 12)) + 120; // toujours initialiser le serpent dans la moitié basse de l'écran
 	snake_[1].id = tileType::SNAKE_HEAD;
+	direction_ = Direction::NORTH;
+}
+
+/**
+ * @brief initialise la position initiale du serpent de manière aléatoire sur l'écran
+ *
+ */
+void MySnake::init2(){
+	snake_[1].x = 10 * (std::rand() % 32);
+	snake_[1].y = (10 * (std::rand() % 12)) + 120; // toujours initialiser le serpent dans la moitié basse de l'écran
+	snake_[1].id = tileType::SNAKE_HEAD;
+	direction_ = Direction::SOUTH;
 }
 
 /**
@@ -51,6 +63,10 @@ int MySnake::getSpeedDelay(){
  */
 tile MySnake::getHeadTile(){
 	return snake_[head_];
+}
+
+Direction MySnake::getDirection(){
+	return direction_;
 }
 
 /**
@@ -83,11 +99,11 @@ void MySnake::move(bool eat){
 	int old_y = snake_[head_].y;
 	snake_[head_].id = tileType::SNAKE_BODY;
 
-	snake_[head_].disp(*display_);
+	snake_[head_].disp(display_);
 
 	head_ = ( head_ >= 99) ? 0 : (head_ + 1);
 
-	switch(Direction_){
+	switch(direction_){
 		case Direction::NORTH:
 			setSnakeTile(head_, old_x, (old_y - 10), tileType::SNAKE_HEAD);
 			break;
@@ -108,13 +124,13 @@ void MySnake::move(bool eat){
 			break;
 	}
 
-	snake_[head_].disp(*display_);
-	snake_[tail_].erase(*display_);
+	snake_[head_].disp(display_);
+	snake_[tail_].erase(display_);
 
 	if(!eat)
 		tail_ = ( tail_ >= 99) ? 0 : (tail_ + 1);
 
-	snake_[tail_].disp(*display_);
+	snake_[tail_].disp(display_);
 }
 
 /**
@@ -124,18 +140,18 @@ void MySnake::move(bool eat){
  */
 void MySnake::turn(bool turnDirection){
 
-	switch (Direction_) {
+	switch (direction_) {
 	        case Direction::NORTH:
-	            Direction_ = turnDirection ? Direction::EAST : Direction::WEST;
+	            direction_ = turnDirection ? Direction::EAST : Direction::WEST;
 	            break;
 	        case Direction::SOUTH:
-	        	Direction_ = turnDirection ? Direction::WEST : Direction::EAST;
+	        	direction_ = turnDirection ? Direction::WEST : Direction::EAST;
 	        	break;
 	        case Direction::EAST:
-	        	Direction_ = turnDirection ? Direction::SOUTH : Direction::NORTH;
+	        	direction_ = turnDirection ? Direction::SOUTH : Direction::NORTH;
 	        	break;
 	        case Direction::WEST:
-	        	Direction_ = turnDirection ? Direction::NORTH : Direction::SOUTH;
+	        	direction_ = turnDirection ? Direction::NORTH : Direction::SOUTH;
 	        	break;
 	        default:
 	        	break;

@@ -42,6 +42,7 @@ void Game::setup(peripheral_handles *handles){
 	uart.setup(handles->huart, 5);
 
 	menu_.setup(&display_, &keypad_, &uart);
+	snakeGame_.setup(&display_, &motionInput_, &keypad_, &uart);
 
 	snake_.setup(&display_, &uart);
 	snakeOpp_.setup(&display_, &uart);
@@ -54,61 +55,6 @@ void Game::setup(peripheral_handles *handles){
 
 }
 
-/**
- * @brief affiche un menu ou on peut sélectionner le type de saisie pour contrôler le serpent
- * 
- * @param input_ KEYPAD: on controle le serpent avec le clavier, GYRO: on contrôle le serpent avec l'accéléromètre
- * 
- */
-void Game::inputMenu(){
-
-	display_.clearScreen();
-	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
-	display_.drawString(110, 170, "Keypad: 1 \n Gyro: 3", Color::WHITE);
-
-	while(input_ == ControlMode::INPUT){
-		keypad_.update();
-		switch(keypad_.getFirstKeyPressed()){
-
-			   case KeyCode::ONE:
-				   input_ = ControlMode::KEYPAD;
-				   break;
-
-			   case KeyCode::THREE:
-				   input_ = ControlMode::GYRO;
-				   break;
-
-			   default:
-				   break;
-		}
-	}
-
-}
-
-void Game::gameModeMenu(){
-
-	display_.clearScreen();
-	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
-	display_.drawString(110, 170, "1 joueur: 1 \n 2 joueurs: 3", Color::WHITE);
-
-	while(input_ == ControlMode::INPUT){
-		keypad_.update();
-		switch(keypad_.getFirstKeyPressed()){
-
-			   case KeyCode::ONE:
-
-				   break;
-
-			   case KeyCode::THREE:
-
-				   break;
-
-			   default:
-				   break;
-		}
-	}
-
-}
 
 /**
  * @brief affiche la partie du jeux de snake, ou on peut bouger le serpent, manger des fruits et perdre la partie
@@ -143,12 +89,16 @@ void Game::run(){
 
 		// Handle user input
 		switch(state_){
-			case GameState::InputMenu:
+			case GameState::Menu:
 				keypad_.update();
 				break;
 			case GameState::SnakeGame:
+				keypad_.update();
+				motionInput_.update();
 				break;
 			case GameState::VictoryScreen:
+				break;
+			default:
 				break;
 		}
 
@@ -159,16 +109,19 @@ void Game::run(){
 		if(delay > 100){
 
 			switch(state_){
-				case GameState::InputMenu:
-					if(menu_.run(&input_) )
+				case GameState::Menu:
+					if(menu_.run(&commType_) )
 						state_ = GameState::SnakeGame;
 
 					break;
 
 				case GameState::SnakeGame:
-					if (snakeGame_.run() )
+					if (snakeGame_.run(commType_) )
 						state_ = GameState::VictoryScreen;
 
+					break;
+
+				default:
 					break;
 			}
 
@@ -238,6 +191,26 @@ void Game::gameOver(){
 	display_.clearScreen();
 	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	display_.drawString(120, 160, "GAME OVER", Color::RED);
+
+}
+
+/** @brief Method that takes data provided by the uart interrupt.
+  * @details The received data is stored internally and complete messages are
+  * dispatched to the corresponding game sections.
+  * @param [in] data A byte of data received from the serial interface.
+  */
+void Game::handleUART(uint8_t data){
+	uartBuffer.write(&data, 1);
+}
+
+/** @brief Method that takes data provided by the uart interrupt.
+  * @details The received data is stored internally and complete messages are
+  * dispatched to the corresponding game sections.
+  * @param [in] data A byte array of data received from the serial interface.
+  * @param [in] size The number of bytes in the buffer to be written.
+  */
+void Game::handleUART(uint8_t *data, uint16_t size){
+	uartBuffer.write(data, size);
 
 }
 

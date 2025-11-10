@@ -2,55 +2,60 @@
   * @file cpp_main.cpp
   * @date June 2025
   * @brief 
-  * @authors: jean-christophe gauthier & ershad abdul ali
+  * 
   * @defgroup ELE3312
   * @{
   */
 
-
-
-/*
- *   in its current state, the random generation is deterministic every time the firmware is run but adding users inputs and a menu will solve the problem
- *
- *
- */
-
-
-#include <memory>
-#include <cstdio>
-#include <string>
-
-#include "main.h"
-#include "tile.h"
-#include "MySnake.h"
-#include "Game/Game.h"
 #include <cpp_main.h>
-#include <NucleoImp/Display/ILI9341Display.h>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-
+#include "Game/Game.h"
 
 using namespace ELE3312;
 
-Game snakeGame;
+Game *p_game = nullptr;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-/** @brief main function of the game.
-  * @param [in] handles A pointer to a structure with peripheral handles from the HAL.
+// Implemented in a different C++ file.
+/** @brief Handles a single byte received via the serial interface (UART)
+  * @param [in] data A data byte received via UART.
+  */
+void  handleUART(uint8_t data) {
+	if (p_game != nullptr){
+		p_game->handleUART(data);	
+	}
+}
+
+
+/** @brief Handles an array of bytes received via the serial interface (UART)
+  * @param [in] data A data byte received via UART.
+  * @param [in] size The size (number of bytes) of the received data.
+  */
+void handleUARTData(uint8_t *data, uint16_t size){
+	if(p_game != nullptr){
+		p_game->handleUART(data, size);
+	}
+}
+
+
+#ifdef __cplusplus
+}
+#endif
+
+TIM_HandleTypeDef *distance_timer_handle;
+Game game; // The object that implements the PacMan game.
+
+/** @brief Main function that is run in C++ environment.
+  * @param handlers A structure that contains pointers to the different micro controller 
+  * peripherals used in the game.
   */
  void cpp_main(peripheral_handles *handles) {
-
-	 snakeGame.setup(handles);
-	 snakeGame.inputMenu();
-	 HAL_Delay(1000);
-	 snakeGame.gameModeMenu();
-
-	 std::srand(HAL_GetTick()); // seed with current time, should be pseudo-random after running snakeGame.menu()
-   
-	 snakeGame.run();
-	 snakeGame.gameOver();
-
-	 while(1) {}
+	// This is our entry point to the C++ domain
+	distance_timer_handle = handles->htim_distance;
+	game.setup(handles);
+	p_game = &game;
+	game.run();
 
 }
 

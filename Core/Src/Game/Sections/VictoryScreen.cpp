@@ -5,7 +5,7 @@
  *      Author: jcgauthier
  */
 
-#include "VictoryScreen.h"
+#include "Game/Sections/VictoryScreen.h"
 
 namespace ELE3312 {
 

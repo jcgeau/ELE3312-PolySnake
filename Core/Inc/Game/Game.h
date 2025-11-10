@@ -17,6 +17,7 @@
 #include "NucleoImp/MotionInput/MPU6050MotionInput.h"
 #include "NucleoImp/SerialCom/UART.h"
 #include "NucleoImp/SerialCom/Ringbuffer.h"
+#include "Game/ComMessages/CommTypeMessage.h"
 #include "Game/Sections/Menu.h"
 #include "Game/Sections/SnakeGame.h"
 #include "Game/Sections/VictoryScreen.h"
@@ -28,16 +29,11 @@
 
 namespace ELE3312 {
 
-enum class CommState{
-	Unknown,
-	Master,
-	Slave
 
-};
 
 
 enum class GameState{
-	InputMenu,
+	Menu,
 	GameModeMenu,
 	SnakeGame,
 	VictoryScreen
@@ -52,12 +48,12 @@ enum class ControlMode{
 
 
 class Game {
+
 public:
 	Game();
 	virtual ~Game();
 
 	void setup(peripheral_handles *handles);
-	void inputMenu();
 	void gameModeMenu();
 
 	void initMaster();
@@ -65,6 +61,9 @@ public:
 
 	void run();
 	void gameOver();
+
+	void handleUART(uint8_t data);
+	void handleUART(uint8_t *data, uint16_t size);
 
 
 private:
@@ -85,9 +84,8 @@ private:
 	static VictoryScreen victoryScreen_;
 
 
-	CommState commState_{CommState::Unknown};
-	ControlMode input_{ ControlMode::INPUT };
-	GameState state_{ GameState::InputMenu};
+	CommType commType_{CommType::Unknown};
+	GameState state_{ GameState::Menu};
 
 	MySnake snake_;
 	MySnake snakeOpp_;

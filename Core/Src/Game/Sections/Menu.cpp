@@ -5,7 +5,7 @@
  *      Author: jcgauthier
  */
 
-#include "Menu.h"
+#include "Game/Sections/Menu.h"
 
 namespace ELE3312 {
 
@@ -32,7 +32,7 @@ void Menu::setup(Display *disp, Keypad *keypad, Communication *comm) {
   * @retval true Indicates that the player has chosen a game character.
   * @retval false Indicates that the player has not yet chosen a game character.
   */
-bool Menu::run(ControlMode *input){
+bool Menu::run(CommType *input){
 
 	switch(state){
 		case MenuState::Initialization:
@@ -45,11 +45,11 @@ bool Menu::run(ControlMode *input){
 				switch(keypad->getFirstKeyPressed()){
 
 					   case KeyCode::ONE:
-						   *input = ControlMode::KEYPAD;
+						   *input = CommType::Master;
 						   return true;
 
 					   case KeyCode::THREE:
-						   *input = ControlMode::GYRO;
+						   *input = CommType::Slave;
 						   return true;
 
 					   default:

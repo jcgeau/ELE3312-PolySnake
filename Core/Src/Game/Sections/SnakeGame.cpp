@@ -5,26 +5,96 @@
  *      Author: jcgauthier
  */
 
-#include "SnakeGame.h"
+#include "Game/Sections/SnakeGame.h"
 
 namespace ELE3312 {
 
-SnakeGame::SnakeGame() {
-	// TODO Auto-generated constructor stub
+SnakeGame::SnakeGame() {}
+
+SnakeGame::~SnakeGame() {}
+
+bool SnakeGame::run(CommType commType){
+
+	switch(state){
+		case SnakeGameState::Initialization:
+			this->commType = commType;
+			initialize();
+			state = SnakeGameState::Run;
+
+		case SnakeGameState::Run:
+
+			if (keypad->isAnnyKeyPressed())
+				localSnake.turnKeypad(keypad->getFirstKeyPressed());
+
+			localSnake.turnGyro(gyro->getX(), gyro->getY());
+
+			localSnake.move(false); //TODO ajouter la logique pour manger un fruit
+
+			if(comm){
+				// SnakeMessage msg(localSnake.getDirection());
+				// comm->send(&msg);
+			}
+
+			if(localSnake.checkColisionV2()) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
+				return true;
+			//return true; // Run finished
+		}
+	return false; // Run incomplete
+	//display_.clearScreen();
+	//display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+
 
 }
 
-SnakeGame::~SnakeGame() {
-	// TODO Auto-generated destructor stub
+
+void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm){
+	this->disp = disp;
+	this->gyro = gyro;
+	this->keypad = keypad;
+	this->comm = comm;
+	opponentEncountered = false;
+
+	localSnake.setup(disp, comm);
+	remoteSnake.setup(disp, comm);
+
+
 }
 
-void SnakeGame::run(){
 
+void SnakeGame::initialize(){
 
-	display_.clearScreen();
-	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+	disp->clearScreen();
+	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+
+	switch(commType){
+
+	case CommType::Master:
+		localSnake.init1();
+		remoteSnake.init2();
+		// TODO initialiser les fruits
+
+		break;
+	case CommType::Slave:
+		remoteSnake.init1();
+		localSnake.init2();
+		// TODO recevoir la metadata des fruits
+
+		break;
+
+	default:
+		break;
+	}
+
 
 
 }
+
+bool SnakeGame::updatePlayerPosition(float x, float y){
+
+
+
+}
+
+
 
 } /* namespace ELE3312 */

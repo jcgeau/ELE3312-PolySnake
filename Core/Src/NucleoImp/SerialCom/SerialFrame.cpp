@@ -11,9 +11,7 @@
 #include "NucleoImp/SerialCom/SerialFrame.h"
 #include "NucleoImp/SerialCom/COBS.h"
 #include "Game/ComMessages/TextMessage.h"
-#include "Game/ComMessages/PlayerChoiceMessage.h"
-#include "Game/ComMessages/LabyrinthMessage.h"
-#include "Game/ComMessages/CombatMessage.h"
+#include "Game/ComMessages/CommTypeMessage.h"
 
 using namespace ELE3312;
 
@@ -82,23 +80,12 @@ void SerialFrame::setMessage(uint8_t* byteArray, size_t arraySize){
 }
 
 
-/** @brief Returns a LabyrinthMessage.
-  * @return Interpretation of the internal buffer as a LabyrinthMessage.
-  */
-LabyrinthMessage SerialFrame::getLabyrinthMessage(){
-	LabyrinthMessage msg;
-	if(messageType == MessageType::Position){
-		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
-		msg.setValid(true);
-	}
-	return msg;
-}
 
 /** @brief Returns a PlayerChoiceMessage.
   * @return Interpretation of the internal buffer as a PlayerChoiceMessage.
   */
-PlayerChoiceMessage SerialFrame::getPlayerChoiceMessage(){
-	PlayerChoiceMessage msg;
+CommTypeMessage SerialFrame::getCommTypeMessage(){
+	CommTypeMessage msg;
 	if(messageType == MessageType::PlayerChoice){
 		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
 		msg.setValid(true);
@@ -106,17 +93,6 @@ PlayerChoiceMessage SerialFrame::getPlayerChoiceMessage(){
 	return msg;
 }
 
-/** @brief Returns a CombatMessage.
-  * @return Interpretation of the internal buffer as a CombatMessage.
-  */
-CombatMessage SerialFrame::getCombatMessage(){
-	CombatMessage msg;
-	if(messageType == MessageType::PowerValue){
-		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
-		msg.setValid(true);
-	}
-	return msg;
-}
 
 // Private Helper Methods
 /** @brief The function serializes the specified message to an array of bytes that is COBS encoded for

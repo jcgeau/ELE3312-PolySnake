@@ -19,7 +19,7 @@ Fruits::~Fruits() {}
  * 
  * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-void Fruits::setup(ILI9341Display *display){
+void Fruits::setup(Display *display){
 	display_ = display;
 
 }
@@ -47,7 +47,7 @@ void Fruits::generateFruits() { //2285559
 void Fruits::displayFruits() { //2285559
 
     for (int i = 0; i < fruitCount_; i++) {
-        fruits_[i].disp(*display_);
+        fruits_[i].disp(display_);
     }
 }
 
