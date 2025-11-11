@@ -18,7 +18,7 @@ namespace ELE3312 {
 	/** A MessageType describes the purpose of a message.
 	  */
 	enum class MessageType{
-		Ack,NAck, PlayerChoice, Position, Winner, Ready, Data, Text, Unknown
+		Ack,NAck, PlayerChoice, Direction, Winner, Ready, Data, Text, Unknown
 	};
 	/** @brief Abstract class that defines the interface of a message.
 	  */

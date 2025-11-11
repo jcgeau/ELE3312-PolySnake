@@ -11,7 +11,7 @@
 #include "Interfaces/MotionInput/MotionInput.h"
 #include "Interfaces/Display/Display.h"
 #include "Interfaces/Communication/Communication.h"
-//TODO #include "Game/ComMessages/LabyrinthMessage.h"
+#include "Game/ComMessages/SnakeMessage.h"
 #include "Game/ComMessages/CommTypeMessage.h"
 #include "MySnake.h"
 #include "Fruits.h"
@@ -51,6 +51,7 @@ private:
 
 	void initialize();
 	bool updatePlayerPosition(float x, float y);
+	void handleRemote(SnakeMessage msg);
 };
 
 } /* namespace ELE3312 */

@@ -31,9 +31,12 @@ bool SnakeGame::run(CommType commType){
 			localSnake.move(false); //TODO ajouter la logique pour manger un fruit
 
 			if(comm){
-				// SnakeMessage msg(localSnake.getDirection());
-				// comm->send(&msg);
+				SnakeMessage msg(localSnake.getDirection());
+				comm->send(&msg);
 			}
+
+
+			// TODO ajouter une fonction pour regarder la collision des deux snake
 
 			if(localSnake.checkColisionV2()) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
 				return true;
@@ -91,10 +94,21 @@ void SnakeGame::initialize(){
 
 bool SnakeGame::updatePlayerPosition(float x, float y){
 
-
+	return false;
 
 }
 
+
+void SnakeGame::handleRemote(SnakeMessage msg){
+
+	if(!msg.isValid()){
+		return;
+	}
+
+	remoteSnake.setDirection(msg.getDirection());
+	remoteSnake.move(false); // TODO ajouter la logique pour manger un fruit
+
+}
 
 
 } /* namespace ELE3312 */

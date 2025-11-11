@@ -28,11 +28,20 @@ void Menu::setup(Display *disp, Keypad *keypad, Communication *comm) {
 
 }
 
+CommType Menu::getType(){
+	return type;
+}
+
 /** @brief Method that contains the mechanics of the menu. It will update one frame.
   * @retval true Indicates that the player has chosen a game character.
   * @retval false Indicates that the player has not yet chosen a game character.
   */
-bool Menu::run(CommType *input){
+bool Menu::run(){
+
+	if(type != CommType::Unknown){
+		return true;
+	}
+
 
 	switch(state){
 		case MenuState::Initialization:
@@ -45,11 +54,11 @@ bool Menu::run(CommType *input){
 				switch(keypad->getFirstKeyPressed()){
 
 					   case KeyCode::ONE:
-						   *input = CommType::Master;
+						   type = CommType::Master;
 						   return true;
 
 					   case KeyCode::THREE:
-						   *input = CommType::Slave;
+						   type = CommType::Slave;
 						   return true;
 
 					   default:
@@ -75,7 +84,26 @@ void Menu::initialize(){
 /** @brief Handles incoming messages.
   * @param [in] msg PlayerChoiceMessage containing the character choice of the other player.
   */
-void Menu::handleRemote(){
+void Menu::handleRemote(CommTypeMessage msg){
+
+	if(!msg.isValid()){
+		return;
+	}
+
+	switch(msg.getCommType()){
+
+	case CommType::Master:
+		type = CommType::Slave;
+		break;
+	case CommType::Slave:
+		type = CommType::Master;
+		break;
+
+
+	default:
+		return
+
+	}
 
 }
 

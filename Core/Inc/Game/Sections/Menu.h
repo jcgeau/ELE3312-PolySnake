@@ -32,11 +32,12 @@ public:
 	void setup(Display *disp, Keypad *keypad, Communication *comm);
 	virtual ~Menu() = default;
 
-	bool run(CommType *input);
-	bool choiceInput();
-	bool choiceMode();
-	// void handleRemote(PlayerChoiceMessage msg);
-	void handleRemote();
+	CommType getType();
+
+	bool run();
+
+	void handleRemote(CommTypeMessage msg);
+
 private:
 	void initialize();
 	Display *disp {nullptr};
@@ -44,6 +45,7 @@ private:
 	Communication *comm {nullptr};
 	bool choiceGhost_{false};
 	MenuState state {MenuState::Initialization};
+	CommType type {CommType::Unknown};
 };
 
 } /* namespace ELE3312 */

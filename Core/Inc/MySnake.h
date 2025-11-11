@@ -26,6 +26,7 @@ namespace ELE3312 {
 
 
 enum class Direction {
+	Unknown,
 	NORTH,
 	WEST,
 	SOUTH,
@@ -47,6 +48,7 @@ public:
 	Direction getDirection();
 
 	void setSnakeTile(int index, int x, int y, tileType id);
+	void setDirection(Direction direction);
 
 	void move(bool eat);
 	void turn(bool turnDirection);

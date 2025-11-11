@@ -76,9 +76,9 @@ void Game::run(){
 						//menu_.handleRemote(frame.getPlayerChoiceMessage());
 					}
 					break;
-				case MessageType::Position :
+				case MessageType::Direction :
 					if (state_ == GameState::SnakeGame) { // Only dispatch messages for the current state
-						// labyrinth.handleRemote(frame.getLabyrinthMessage());
+						//snakeGame_.handleRemote(frame.getLabyrinthMessage());
 					}
 					break;
 
@@ -110,7 +110,8 @@ void Game::run(){
 
 			switch(state_){
 				case GameState::Menu:
-					if(menu_.run(&commType_) )
+					if(menu_.run() )
+						commType_ = menu_.getType();
 						state_ = GameState::SnakeGame;
 
 					break;

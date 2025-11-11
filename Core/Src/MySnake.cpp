@@ -85,6 +85,10 @@ void MySnake::setSnakeTile(int index, int x, int y, tileType id){
 
 }
 
+void MySnake::setDirection(Direction direction){
+	direction_ = direction;
+}
+
 
 /**
  * @brief Déplace le serpent d'une case dans la Direction courante et affiche le serpent
