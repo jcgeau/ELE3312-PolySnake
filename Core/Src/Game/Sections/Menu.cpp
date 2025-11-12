@@ -54,10 +54,18 @@ bool Menu::run(){
 
 					   case KeyCode::ONE:
 						   type = CommType::Master;
+						   if(comm){
+								CommTypeMessage msg(CommType::Master);
+								comm->send(&msg);
+							}
 						   return true;
 
 					   case KeyCode::THREE:
 						   type = CommType::Slave;
+						   if(comm){
+								CommTypeMessage msg(CommType::Slave);
+								comm->send(&msg);
+							}
 						   return true;
 
 					   default:
