@@ -55,16 +55,20 @@ bool Menu::run(){
 					   case KeyCode::ONE:
 						   type = CommType::Master;
 						   if(comm){
-								CommTypeMessage msg(CommType::Master);
-								comm->send(&msg);
+							   int randSeed = std::time(nullptr);
+							   std::srand(randSeed);
+							   CommTypeMessage msg(CommType::Master, randSeed);
+							   comm->send(&msg);
 							}
 						   return true;
 
 					   case KeyCode::THREE:
 						   type = CommType::Slave;
 						   if(comm){
-								CommTypeMessage msg(CommType::Slave);
-								comm->send(&msg);
+							   int randSeed = std::time(nullptr);
+							   std::srand(randSeed);
+							   CommTypeMessage msg(CommType::Slave, randSeed);
+							   comm->send(&msg);
 							}
 						   return true;
 
@@ -96,6 +100,8 @@ void Menu::handleRemote(CommTypeMessage msg){
 	if(!msg.isValid()){
 		return;
 	}
+
+	std::srand(msg.getRandSeed());
 
 	switch(msg.getCommType()){
 

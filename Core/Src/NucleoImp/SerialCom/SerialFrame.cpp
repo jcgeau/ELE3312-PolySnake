@@ -102,6 +102,23 @@ SnakeMessage SerialFrame::getSnakeMessage(){
 	return msg;
 }
 
+FruitMessage SerialFrame::getFruitMessage(){
+	FruitMessage msg;
+	if(messageType == MessageType::Fruit){
+		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
+		msg.setValid(true);
+	}
+	return msg;
+}
+
+VictoryMessage SerialFrame::getVictoryMessage(){
+	VictoryMessage msg;
+	if(messageType == MessageType::Winner){
+		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
+		msg.setValid(true);
+	}
+	return msg;
+}
 
 // Private Helper Methods
 /** @brief The function serializes the specified message to an array of bytes that is COBS encoded for

@@ -20,8 +20,9 @@ void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communic
 	this->comm = comm;
 	opponentEncountered = false;
 
-	localSnake.setup(disp, comm);
-	remoteSnake.setup(disp, comm);
+	localSnake.setup(disp);
+	remoteSnake.setup(disp);
+	fruits.setup(disp, comm);
 
 }
 
@@ -40,32 +41,37 @@ bool SnakeGame::run(CommType commType){
 				return false;
 			}
 
+			fruits.displayFruits();
+
 			if (keypad->isAnnyKeyPressed())
 				localSnake.turnKeypad(keypad->getFirstKeyPressed());
 
 			localSnake.turnGyro(gyro->getX(), gyro->getY());
 
-			localSnake.move(false); //TODO ajouter la logique pour manger un fruit
+			if(localSnake.move(fruits.checkEatFruit(localSnake.getHeadTile()))){
+				fruits.generateNewFruit();
+			}
 
 			if(comm){
 				SnakeMessage msg(localSnake.getDirection());
 				comm->send(&msg);
 			}
 
+			if( localSnake.checkColision() || remoteSnake.checkColision( localSnake.getHeadTile() ) ){
 
-			// TODO ajouter une fonction pour regarder la collision des deux snake
-
-			if( localSnake.checkColision() || remoteSnake.checkColision( localSnake.getHeadTile() ) ) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
+				if(comm){
+					VictoryMessage msg(Winner::Winner);
+					comm->send(&msg);
+				}
 				return true;
+
+			}
 			//return true; // Run finished
 			HAL_Delay(50);
 			counter = 0;
 
 		}
 	return false; // Run incomplete
-	//display_.clearScreen();
-	//display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
-
 
 }
 
@@ -81,13 +87,15 @@ void SnakeGame::initialize(){
 	case CommType::Master:
 		localSnake.init1();
 		remoteSnake.init2();
-		// TODO initialiser les fruits
+		fruits.generateFruits();
+		fruits.displayFruits();
 
 		break;
 	case CommType::Slave:
 		remoteSnake.init1();
 		localSnake.init2();
-		// TODO recevoir la metadata des fruits
+		fruits.generateFruits();
+		fruits.displayFruits();
 
 		break;
 
@@ -99,6 +107,15 @@ void SnakeGame::initialize(){
 
 }
 
+void SnakeGame::handleRemote(FruitMessage msg){
+
+	if(!msg.isValid()){
+		return;
+	}
+
+	fruits.setFruit(msg.getFruit(), msg.getIndex());
+
+}
 
 void SnakeGame::handleRemote(SnakeMessage msg){
 
@@ -107,8 +124,10 @@ void SnakeGame::handleRemote(SnakeMessage msg){
 	}
 
 	remoteSnake.setDirection(msg.getDirection());
-	remoteSnake.move(false); // TODO ajouter la logique pour manger un fruit
 
+	if(remoteSnake.move(fruits.checkEatFruit(remoteSnake.getHeadTile()))){
+		fruits.generateNewFruit();
+	}
 
 }
 

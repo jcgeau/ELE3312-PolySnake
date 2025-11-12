@@ -19,11 +19,17 @@ Fruits::~Fruits() {}
  * 
  * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-void Fruits::setup(Display *display){
+void Fruits::setup(Display *display, Communication *comm){
 	display_ = display;
-
+	comm_ = comm;
 }
 
+
+void Fruits::setFruit(tile fruit, int index){
+	fruits_[index].x = fruit.x;
+	fruits_[index].y = fruit.y;
+	fruits_[index].id = fruit.id;
+}
 
 /**
  * @brief génere le nombre de fruits équivalent au paramètre fruitCount
@@ -47,7 +53,8 @@ void Fruits::generateFruits() { //2285559
 void Fruits::displayFruits() { //2285559
 
     for (int i = 0; i < fruitCount_; i++) {
-        fruits_[i].disp(display_);
+    	if(fruits_[i].id != tileType::BACKGROUND)
+    		fruits_[i].disp(display_);
     }
 }
 
@@ -96,6 +103,28 @@ extern "C" bool checkEatFruit_asm(Fruits *self, tile headTile);
  */
 bool Fruits::checkEatFruitV2(tile headTile) {
     return checkEatFruit_asm(this, headTile);
+}
+
+void Fruits::sendFruit(tile fruit, int index){
+
+	if(!comm_)
+		return;
+
+	FruitMessage msg(fruit, index);
+	comm_->send(&msg);
+
+}
+
+void Fruits::sendFruits(){
+
+	if(!comm_)
+		return;
+
+	for (int i = 0; i < fruitCount_; i++) {
+		sendFruit(fruits_[i], i);
+	}
+
+
 }
 
 

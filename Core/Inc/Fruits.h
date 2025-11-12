@@ -9,10 +9,9 @@
 #define SRC_FRUITS_H_
 
 #include "tile.h"
-#include "NucleoImp/Display/ILI9341Display.h"
-#include "Interfaces/Keypad/Keypad.h"
-#include "NucleoImp/Keypad/GPIOKeypad.h"
-#include "NucleoImp/MotionInput/MPU6050MotionInput.h"
+#include "Interfaces/Display/Display.h"
+#include "Interfaces/Communication/Communication.h"
+#include "Game/ComMessages/FruitMessage.h"
 #include "cpp_main.h"
 
 #include <cstdlib>
@@ -25,17 +24,22 @@ public:
 	Fruits();
 	virtual ~Fruits();
 
-	void setup(Display *display);
+	void setup(Display *display, Communication* comm);
+
+	void setFruit(tile fruit, int index);
 
 	void generateFruits();
 	void displayFruits();
 	void generateNewFruit();
 	bool checkEatFruit(tile headTile);
 	bool checkEatFruitV2(tile headTile);
+	void sendFruit(tile fruit, int index);
+	void sendFruits();
 
 private:
 
 	Display *display_ = nullptr;
+	Communication *comm_ = nullptr;
 
 	tile fruits_[100]; // 10 fruits maximum
 	int fruitCount_{10};

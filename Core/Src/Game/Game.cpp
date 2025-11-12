@@ -62,7 +62,6 @@ void Game::setup(peripheral_handles *handles){
 void Game::run(){
 
 	SerialFrame frame;
-	volatile int delay = 0;
 
 	while(1){
 		// Check UART and dispatch messages
@@ -75,11 +74,18 @@ void Game::run(){
 						menu_.handleRemote(frame.getCommTypeMessage());
 					}
 					break;
+
 				case MessageType::Direction :
 					if (state_ == GameState::SnakeGame) { // Only dispatch messages for the current state
 						snakeGame_.handleRemote(frame.getSnakeMessage());
 					}
 					break;
+
+				case MessageType::Winner:
+					if (state_ == GameState::SnakeGame) { // Only dispatch messages for the current state
+						winGame(frame.getVictoryMessage());
+					}
+
 
 				default:
 					break;
@@ -102,8 +108,6 @@ void Game::run(){
 		}
 
 
-		HAL_Delay(1);
-		delay++;
 
 		switch(state_){
 			case GameState::Menu:
@@ -121,24 +125,40 @@ void Game::run(){
 
 			case GameState::VictoryScreen:
 				gameOver();
+				break;
+
 			default:
 				break;
 		}
+
+		HAL_Delay(1);
+
 	}
 }
 
-
-
-/**
- * @brief affiche l'écran de "game over"
- * 
- */
 void Game::gameOver(){
 
 	display_.clearScreen();
 	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	display_.drawString(120, 160, "GAME OVER", Color::RED);
+	state_ = GameState::Idle;
 
+}
+
+/**
+ * @brief affiche l'écran de "game over"
+ * 
+ */
+void Game::winGame(VictoryMessage msg){
+
+	if( (!msg.isValid()) || (msg.getWinner() == Winner::Unknown)){
+		return;
+	}
+
+	display_.clearScreen();
+	display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+	display_.drawString(120, 160, "WINNER", Color::GREEN);
+	state_ = GameState::Idle;
 }
 
 /** @brief Method that takes data provided by the uart interrupt.

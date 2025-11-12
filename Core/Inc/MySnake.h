@@ -39,7 +39,7 @@ public:
 	MySnake();
 	virtual ~MySnake();
 
-	void setup(Display *display, Communication *comm);
+	void setup(Display *display);
 	void init1();
 	void init2();
 
@@ -50,7 +50,7 @@ public:
 	void setSnakeTile(int index, int x, int y, tileType id);
 	void setDirection(Direction direction);
 
-	void move(bool eat);
+	bool move(bool eat);
 	void turn(bool turnDirection);
 
 	void turnKeypad(KeyCode FirstKey);
@@ -70,7 +70,6 @@ public:
 private:
 
 	Display *display_ = nullptr;
-	Communication *comm_ = nullptr;
 
 	tile snake_[100];
 

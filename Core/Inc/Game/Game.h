@@ -21,6 +21,7 @@
 #include "Game/Sections/Menu.h"
 #include "Game/Sections/SnakeGame.h"
 #include "Game/Sections/VictoryScreen.h"
+#include "NucleoImp/SerialCom/SerialFrame.h"
 #include "cpp_main.h"
 #include "MySnake.h"
 #include "Fruits.h"
@@ -36,7 +37,8 @@ enum class GameState{
 	Menu,
 	GameModeMenu,
 	SnakeGame,
-	VictoryScreen
+	VictoryScreen,
+	Idle
 
 };
 
@@ -61,6 +63,7 @@ public:
 
 	void run();
 	void gameOver();
+	void winGame(VictoryMessage msg);
 
 	void handleUART(uint8_t data);
 	void handleUART(uint8_t *data, uint16_t size);

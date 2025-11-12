@@ -20,9 +20,8 @@ MySnake::~MySnake() {}
  * 
  * @param display pointeur vers l'objet permettant l'affichage des composantes
  */
-void MySnake::setup(Display *display, Communication *comm){
+void MySnake::setup(Display *display){
 	display_ = display;
-	comm_ = comm;
 }
 
 /**
@@ -103,7 +102,7 @@ void MySnake::setDirection(Direction direction){
  *
  * @param eat Si vrai, le serpent grandit d’une unité.
  */
-void MySnake::move(bool eat){
+bool MySnake::move(bool eat){
 
 
 	int old_x = snake_[head_].x;
@@ -138,10 +137,14 @@ void MySnake::move(bool eat){
 	snake_[head_].disp(display_);
 	snake_[tail_].erase(display_);
 
-	if(!eat)
+	if(!eat){
 		tail_ = ( tail_ >= 99) ? 0 : (tail_ + 1);
+		return false;
+	}
 
 	snake_[tail_].disp(display_);
+
+	return true;
 }
 
 /**

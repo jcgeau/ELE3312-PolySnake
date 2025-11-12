@@ -12,11 +12,13 @@
 #include "Interfaces/Display/Display.h"
 #include "Interfaces/Communication/Communication.h"
 #include "Game/ComMessages/SnakeMessage.h"
+#include "Game/ComMessages/VictoryMessage.h"
 #include "Game/ComMessages/CommTypeMessage.h"
 #include "MySnake.h"
 #include "Fruits.h"
-#include <memory>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 namespace ELE3312 {
 
@@ -33,6 +35,7 @@ public:
 	void setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm);
 
 	bool run(CommType commType);
+	void handleRemote(FruitMessage msg);
 	void handleRemote(SnakeMessage msg);
 
 private:
@@ -44,6 +47,7 @@ private:
 	CommType commType = CommType::Unknown;
 	MySnake localSnake;
 	MySnake remoteSnake;
+	Fruits fruits;
 
 	bool opponentEncountered; //!< Indicates that the opponent was encountered.
 	SnakeGameState state = SnakeGameState::Initialization;

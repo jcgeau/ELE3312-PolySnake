@@ -14,6 +14,8 @@
 #include "Game/ComMessages/CommTypeMessage.h"
 // #include "Game/ComMessages/PlayerChoiceMessage.h"
 #include <memory>
+#include <cstdlib>
+#include <ctime>
 
 namespace ELE3312 {
 

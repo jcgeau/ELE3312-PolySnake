@@ -7,51 +7,41 @@
   * @defgroup ELE3312
   * @{
   */
-#ifndef STRINGMESSAGE_INCLUDE_GUARD
-#define STRINGMESSAGE_INCLUDE_GUARD
+#ifndef VICTORYMESSAGE_INCLUDE_GUARD
+#define VICTORYMESSAGE_INCLUDE_GUARD
 
 #include "Interfaces/Communication/Message.h"
+#include "MySnake.h"
 #include <string>
 #include <iostream>
 
 
 namespace ELE3312 {
 
-enum class CommType{
+enum class Winner{
 	Unknown,
-	Master,
-	Slave
-
-};
-
-struct CommTypeMessageData{
-	CommType type;
-	int randSeed;
-
+	Winner
 };
 
 /** @brief The LabyrinthMessage class encapsulates information in the
 * labyrinth phase of the game.
 */
-class CommTypeMessage : public Message {
+class VictoryMessage : public Message {
 	public:
-		CommTypeMessage(CommType commType, int randSeed);
-		CommTypeMessage();
+		VictoryMessage(Winner winner);
+		VictoryMessage();
 		// Setters
 		void setType(MessageType newType);
 		virtual void setData(uint8_t *newData, size_t length) override;
-		void setCommType(CommType commType);
-		void setRandSeed(int randSeed);
 		// Getters
 		MessageType getType();
 		virtual size_t getSize() const override;
 		virtual const uint8_t *getData() const override;
-		CommType getCommType() const;
-		int getRandSeed() const;
+		Winner getWinner() const;
 
 		virtual std::string toString() const override;
 	private:
-		CommTypeMessageData data;
+		Winner winner;
 };
 
 } // End of namespace ELE3312
