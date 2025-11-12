@@ -14,6 +14,7 @@
 
 #include "Interfaces/Communication/Message.h"
 #include "Game/ComMessages/CommTypeMessage.h"
+#include "Game/ComMessages/SnakeMessage.h"
 #include <memory>
 #include <tuple>
 
@@ -30,6 +31,7 @@ namespace ELE3312 {
 			// Getters
 			std::tuple<uint8_t*, size_t> getByteArray();
 			CommTypeMessage getCommTypeMessage();
+			SnakeMessage getSnakeMessage();
 
 			MessageType getMessageType();
 

@@ -13,6 +13,18 @@ SnakeGame::SnakeGame() {}
 
 SnakeGame::~SnakeGame() {}
 
+void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm){
+	this->disp = disp;
+	this->gyro = gyro;
+	this->keypad = keypad;
+	this->comm = comm;
+	opponentEncountered = false;
+
+	localSnake.setup(disp, comm);
+	remoteSnake.setup(disp, comm);
+
+}
+
 bool SnakeGame::run(CommType commType){
 
 	switch(state){
@@ -22,6 +34,11 @@ bool SnakeGame::run(CommType commType){
 			state = SnakeGameState::Run;
 
 		case SnakeGameState::Run:
+
+			if(counter < localSnake.getSpeedDelay()){
+				counter++;
+				return false;
+			}
 
 			if (keypad->isAnnyKeyPressed())
 				localSnake.turnKeypad(keypad->getFirstKeyPressed());
@@ -38,9 +55,12 @@ bool SnakeGame::run(CommType commType){
 
 			// TODO ajouter une fonction pour regarder la collision des deux snake
 
-			if(localSnake.checkColisionV2()) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
+			if( localSnake.checkColision() || remoteSnake.checkColision( localSnake.getHeadTile() ) ) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
 				return true;
 			//return true; // Run finished
+			HAL_Delay(50);
+			counter = 0;
+
 		}
 	return false; // Run incomplete
 	//display_.clearScreen();
@@ -49,19 +69,6 @@ bool SnakeGame::run(CommType commType){
 
 }
 
-
-void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm){
-	this->disp = disp;
-	this->gyro = gyro;
-	this->keypad = keypad;
-	this->comm = comm;
-	opponentEncountered = false;
-
-	localSnake.setup(disp, comm);
-	remoteSnake.setup(disp, comm);
-
-
-}
 
 
 void SnakeGame::initialize(){
@@ -92,12 +99,6 @@ void SnakeGame::initialize(){
 
 }
 
-bool SnakeGame::updatePlayerPosition(float x, float y){
-
-	return false;
-
-}
-
 
 void SnakeGame::handleRemote(SnakeMessage msg){
 
@@ -107,6 +108,7 @@ void SnakeGame::handleRemote(SnakeMessage msg){
 
 	remoteSnake.setDirection(msg.getDirection());
 	remoteSnake.move(false); // TODO ajouter la logique pour manger un fruit
+
 
 }
 

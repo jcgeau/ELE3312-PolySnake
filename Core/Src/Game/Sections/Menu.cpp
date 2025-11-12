@@ -38,19 +38,18 @@ CommType Menu::getType(){
   */
 bool Menu::run(){
 
-	if(type != CommType::Unknown){
-		return true;
-	}
-
-
 	switch(state){
 		case MenuState::Initialization:
 			initialize();
 			state = MenuState::Run;
 
 		case MenuState::Run:
-			if (keypad->isAnnyKeyPressed()){
 
+			if(type != CommType::Unknown){
+					return true;
+			}
+
+			if (keypad->isAnnyKeyPressed()){
 				switch(keypad->getFirstKeyPressed()){
 
 					   case KeyCode::ONE:
@@ -76,7 +75,7 @@ void Menu::initialize(){
 
 	disp->clearScreen();
 	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
-	disp->drawString(110, 170, "Keypad: 1 \n Gyro: 3", Color::WHITE);
+	disp->drawString(110, 170, "player 1: 1 \n Player 2: 3", Color::WHITE);
 
 
 }
@@ -101,7 +100,7 @@ void Menu::handleRemote(CommTypeMessage msg){
 
 
 	default:
-		return
+		return;
 
 	}
 

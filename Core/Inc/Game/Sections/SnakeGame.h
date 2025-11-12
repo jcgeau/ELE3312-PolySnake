@@ -33,7 +33,7 @@ public:
 	void setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm);
 
 	bool run(CommType commType);
-	//TODO void handleRemote(LabyrinthMessage msg);
+	void handleRemote(SnakeMessage msg);
 
 private:
 	Display *disp = nullptr;
@@ -48,10 +48,10 @@ private:
 	bool opponentEncountered; //!< Indicates that the opponent was encountered.
 	SnakeGameState state = SnakeGameState::Initialization;
 
+	int counter{0};
 
 	void initialize();
-	bool updatePlayerPosition(float x, float y);
-	void handleRemote(SnakeMessage msg);
+
 };
 
 } /* namespace ELE3312 */

@@ -60,7 +60,9 @@ public:
 	void displayFruits();
 	bool checkEatFruit();
 
+
 	bool checkColision();
+	bool checkColision(tile oppHead);
 	bool checkColisionV2();
 
 	Direction turnRelative(bool turnLeft);
@@ -74,6 +76,8 @@ private:
 
 	int head_{1};
 	int tail_{0};
+	tileType HEAD{tileType::BACKGROUND};
+	tileType BODY{tileType::BACKGROUND};
 
 	int snakeSpeed_{200};
 	Direction direction_{Direction::NORTH};

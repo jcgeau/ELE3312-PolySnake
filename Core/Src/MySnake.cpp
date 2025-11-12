@@ -30,10 +30,13 @@ void MySnake::setup(Display *display, Communication *comm){
  * 
  */
 void MySnake::init1(){
-	snake_[1].x = 10 * (std::rand() % 32);
-	snake_[1].y = (10 * (std::rand() % 12)) + 120; // toujours initialiser le serpent dans la moitié basse de l'écran
-	snake_[1].id = tileType::SNAKE_HEAD;
+	snake_[1].x = 160;
+	snake_[1].y = 180; // toujours initialiser le serpent dans la moitié basse de l'écran
+	snake_[1].id = tileType::SNAKE_HEAD1;
 	direction_ = Direction::NORTH;
+	HEAD = tileType::SNAKE_HEAD1;
+	BODY = tileType::SNAKE_BODY1;
+	snake_[1].disp(display_);
 }
 
 /**
@@ -41,10 +44,14 @@ void MySnake::init1(){
  *
  */
 void MySnake::init2(){
-	snake_[1].x = 10 * (std::rand() % 32);
-	snake_[1].y = (10 * (std::rand() % 12)) + 120; // toujours initialiser le serpent dans la moitié basse de l'écran
-	snake_[1].id = tileType::SNAKE_HEAD;
+	snake_[1].x = 160;
+	snake_[1].y = 60; // toujours initialiser le serpent dans la moitié basse de l'écran
+	snake_[1].id = tileType::SNAKE_HEAD2;
 	direction_ = Direction::SOUTH;
+	HEAD = tileType::SNAKE_HEAD2;
+	BODY = tileType::SNAKE_BODY2;
+	snake_[1].disp(display_);
+
 }
 
 /**
@@ -101,7 +108,7 @@ void MySnake::move(bool eat){
 
 	int old_x = snake_[head_].x;
 	int old_y = snake_[head_].y;
-	snake_[head_].id = tileType::SNAKE_BODY;
+	snake_[head_].id = BODY;
 
 	snake_[head_].disp(display_);
 
@@ -109,19 +116,19 @@ void MySnake::move(bool eat){
 
 	switch(direction_){
 		case Direction::NORTH:
-			setSnakeTile(head_, old_x, (old_y - 10), tileType::SNAKE_HEAD);
+			setSnakeTile(head_, old_x, (old_y - 10), HEAD);
 			break;
 
 		case Direction::WEST:
-			setSnakeTile(head_, (old_x + 10), old_y, tileType::SNAKE_HEAD);
+			setSnakeTile(head_, (old_x + 10), old_y, HEAD);
 			break;
 
 		case Direction::SOUTH:
-			setSnakeTile(head_, old_x, (old_y +10), tileType::SNAKE_HEAD);
+			setSnakeTile(head_, old_x, (old_y +10), HEAD);
 			break;
 
 		case Direction::EAST:
-			setSnakeTile(head_, (old_x - 10) , old_y , tileType::SNAKE_HEAD);
+			setSnakeTile(head_, (old_x - 10) , old_y , HEAD);
 			break;
 
 		default:
@@ -247,6 +254,21 @@ bool MySnake::checkColision(){
 
 	for(int i = tail_; i != head_;){
 		if( (snake_[head_].x == snake_[i].x) && (snake_[head_].y == snake_[i].y) )
+			return true;
+		i = (i >= 99) ? 0 : (i + 1);
+
+	}
+
+	return false;
+}
+
+bool MySnake::checkColision(tile oppHead){
+
+	if((oppHead.x == snake_[head_].x) && (oppHead.y == snake_[head_].y))
+		return true;
+
+	for(int i = tail_; i != head_;){
+		if( (oppHead.x == snake_[i].x) && (oppHead.y == snake_[i].y) )
 			return true;
 		i = (i >= 99) ? 0 : (i + 1);
 

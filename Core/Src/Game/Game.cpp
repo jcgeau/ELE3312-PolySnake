@@ -44,9 +44,8 @@ void Game::setup(peripheral_handles *handles){
 	menu_.setup(&display_, &keypad_, &uart);
 	snakeGame_.setup(&display_, &motionInput_, &keypad_, &uart);
 
-	snake_.setup(&display_, &uart);
-	snakeOpp_.setup(&display_, &uart);
-	fruits_.setup(&display_);
+
+	//fruits_.setup(&display_);
 	uartBuffer.setup();
 
 
@@ -73,12 +72,12 @@ void Game::run(){
 			switch (frame.getMessageType()){
 				case MessageType::PlayerChoice:
 					if (state_ == GameState::Menu) { // Only dispatch messages for the current state
-						//menu_.handleRemote(frame.getPlayerChoiceMessage());
+						menu_.handleRemote(frame.getCommTypeMessage());
 					}
 					break;
 				case MessageType::Direction :
 					if (state_ == GameState::SnakeGame) { // Only dispatch messages for the current state
-						//snakeGame_.handleRemote(frame.getLabyrinthMessage());
+						snakeGame_.handleRemote(frame.getSnakeMessage());
 					}
 					break;
 
@@ -106,81 +105,28 @@ void Game::run(){
 		HAL_Delay(1);
 		delay++;
 
-		if(delay > 100){
+		switch(state_){
+			case GameState::Menu:
+				if(menu_.run() ){
+					commType_ = menu_.getType();
+					state_ = GameState::SnakeGame;
+				}
+				break;
 
-			switch(state_){
-				case GameState::Menu:
-					if(menu_.run() )
-						commType_ = menu_.getType();
-						state_ = GameState::SnakeGame;
+			case GameState::SnakeGame:
+				if (snakeGame_.run(commType_) )
+					state_ = GameState::VictoryScreen;
 
-					break;
+				break;
 
-				case GameState::SnakeGame:
-					if (snakeGame_.run(commType_) )
-						state_ = GameState::VictoryScreen;
-
-					break;
-
-				default:
-					break;
-			}
-
-			delay = 0;
+			case GameState::VictoryScreen:
+				gameOver();
+			default:
+				break;
 		}
 	}
-
-
-
-
-	/**
-
-	while(1){
-
-
-	// update du périphérique selon le mode de saisie
-	switch(input_){
-	case ControlMode::KEYPAD:
-		keypad_.update();
-		break;
-	case ControlMode::GYRO:
-		motionInput_.update();
-		break;
-	default:
-		break;
-	}
-
-	if (delay >= snake_.getSpeedDelay() ) { // délai plus lent pour contrôler la vitesse du serpent
-
-		fruits_.displayFruits();
-	    snake_.move(fruits_.checkEatFruitV2(snake_.getHeadTile())); // utilisation de la méthode checkEatFruit en assembleur
-	    fruits_.generateNewFruit();
-
-
-	    // direction selon le mode
-	    switch(input_){
-	        case ControlMode::KEYPAD:
-	        	if (keypad_.isAnnyKeyPressed())
-	        		snake_.turnKeypad(keypad_.getFirstKeyPressed());
-	            break;
-	        case ControlMode::GYRO:
-	            snake_.turnGyro(motionInput_.getX(), motionInput_.getY());
-	            break;
-
-	        default:
-	        	break;
-	    }
-
-	    // displaySnake();
-	    delay = 0;
-	    HAL_Delay(50);
-
-	    if(snake_.checkColisionV2()) // sortie de la méthode run() quand il y a une colision, utilisation de la methode checkColision implémenté en assembleur
-	    	break;
-
-	}
-	**/
 }
+
 
 
 /**

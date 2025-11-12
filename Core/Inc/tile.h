@@ -19,8 +19,10 @@ constexpr uint16_t tileHeight{10};
 // enum to clarify id type in tile struct
 enum class tileType {
 	BACKGROUND,
-	SNAKE_HEAD,
-	SNAKE_BODY,
+	SNAKE_HEAD1,
+	SNAKE_BODY1,
+	SNAKE_HEAD2,
+	SNAKE_BODY2,
 	FRUIT_1,
 	FRUIT_2
 
@@ -41,8 +43,10 @@ struct tile {
 
 		switch (id){
 			case tileType::BACKGROUND: color = Color::BLACK; break;
-			case tileType::SNAKE_HEAD: color = Color::YELLOW;break;
-			case tileType::SNAKE_BODY: color = Color::GREEN; break;
+			case tileType::SNAKE_HEAD1: color = Color::YELLOW;break;
+			case tileType::SNAKE_BODY1: color = Color::GREEN; break;
+			case tileType::SNAKE_HEAD2: color = Color::PINK;break;
+			case tileType::SNAKE_BODY2: color = Color::PURPLE; break;
 			case tileType::FRUIT_1: color = Color::RED; break;
 			case tileType::FRUIT_2: color = Color::CYAN; break;
 		}

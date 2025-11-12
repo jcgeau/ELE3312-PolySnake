@@ -93,6 +93,15 @@ CommTypeMessage SerialFrame::getCommTypeMessage(){
 	return msg;
 }
 
+SnakeMessage SerialFrame::getSnakeMessage(){
+	SnakeMessage msg;
+	if(messageType == MessageType::Direction){
+		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
+		msg.setValid(true);
+	}
+	return msg;
+}
+
 
 // Private Helper Methods
 /** @brief The function serializes the specified message to an array of bytes that is COBS encoded for
