@@ -4,7 +4,6 @@
  *  Created on: Nov 1, 2025
  *      Author: jcgauthier
  */
-
 #ifndef SRC_GAME_SECTIONS_MENU_H_
 #define SRC_GAME_SECTIONS_MENU_H_
 
@@ -16,6 +15,7 @@
 #include <memory>
 #include <cstdlib>
 #include <ctime>
+#include "main.h"
 
 namespace ELE3312 {
 

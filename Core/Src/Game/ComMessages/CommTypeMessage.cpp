@@ -1,17 +1,10 @@
-/**
-  * @file PlayerChoice.cpp
-  * @date June 2025
-  * @brief This file implements the PlayerChiceMessage class that is used to
-  * exchange the player's character choice.
-  *
-  * @defgroup ELE3312
-  * @{
-  */
+
 #include "Game/ComMessages/CommTypeMessage.h"
 using namespace ELE3312;
 
 /** @brief Constructor for the CommTypeMessage class.
-  * @param [in] CommType The character the player has chosen in the menu (Pacman or Ghost).
+  * @param [in] CommType The character the player has chosen in the menu (Player1 or Player2).
+  * @param [in] randSeed The seed used for the std::srand function to generate random fruits.
   */
 CommTypeMessage::CommTypeMessage(CommType commType, int randSeed) : Message{MessageType::PlayerChoice} {
 	data.type = commType;
@@ -48,10 +41,20 @@ void CommTypeMessage::setData(uint8_t *newData, size_t length){
 	data.randSeed = ((CommTypeMessageData*)newData)->randSeed;
 }
 
+/**
+ * @brief sets the communication type for the current microcontroler
+ * 
+ * @param commType Unknown, Master or Slave
+ */
 void CommTypeMessage::setCommType(CommType commType){
 	data.type = commType;
 }
 
+/**
+ * @brief sets the seed used in the std::srand function
+ * 
+ * @param randSeed 32 bit integer
+ */
 void CommTypeMessage::setRandSeed(int randSeed){
 	data.randSeed = randSeed;
 }
@@ -83,16 +86,21 @@ const uint8_t *CommTypeMessage::getData() const{
   * @retval A text string containing the message's content.
   */
 std::string CommTypeMessage::toString() const{
-	return "Unknown";
+	return "";
 }
 
 /** @brief Returns the character the player has chosen.
-  * @retval The chosen character (e.g. PacMan or Ghost).
+  * @retval The chosen character (Player1 or player2).
   */
 CommType CommTypeMessage::getCommType() const{
 	return data.type;
 }
 
+/**
+ * @brief returns the seed for the random fruit generation
+ * 
+ * @return int 
+ */
 int CommTypeMessage::getRandSeed() const{
 	return data.randSeed;
 }

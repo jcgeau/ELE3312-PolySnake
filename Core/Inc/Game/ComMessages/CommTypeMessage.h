@@ -1,12 +1,9 @@
-/**
-  * @file TextMessage.h 
-  * @date June 2025
-  * @brief Declares the TextMessage class that represents a message
-  * object that carries a text string.
-  * 
-  * @defgroup ELE3312
-  * @{
-  */
+/*
+ * CommTypeMessage.cpp
+ *
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
+ */
 #ifndef STRINGMESSAGE_INCLUDE_GUARD
 #define STRINGMESSAGE_INCLUDE_GUARD
 

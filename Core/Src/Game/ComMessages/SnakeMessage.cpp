@@ -1,17 +1,14 @@
-/**
-  * @file PlayerChoice.cpp
-  * @date June 2025
-  * @brief This file implements the PlayerChiceMessage class that is used to
-  * exchange the player's character choice.
-  *
-  * @defgroup ELE3312
-  * @{
-  */
+/*
+ * SnakeMessage.cpp
+ *
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
+ */
 #include "Game/ComMessages/SnakeMessage.h"
 using namespace ELE3312;
 
 /** @brief Constructor for the SnakeMessage class.
-  * @param [in] Direction The character the player has chosen in the menu (Pacman or Ghost).
+  * @param [in] Direction Current direction of a MySnake object
   */
 SnakeMessage::SnakeMessage(Direction direction) : Message{MessageType::Direction},
 	direction{direction} {
@@ -82,9 +79,11 @@ std::string SnakeMessage::toString() const{
 	return "Unknown";
 }
 
-/** @brief Returns the character the player has chosen.
-  * @retval The chosen character (e.g. PacMan or Ghost).
-  */
+/**
+ * @brief returns the current direction of a MySnake object
+ * 
+ * @return Direction East, west, south or north
+ */
 Direction SnakeMessage::getDirection() const{
 	return direction;
 }

@@ -3,16 +3,31 @@
  *
  *  Created on: Nov 1, 2025
  *      Author: jcgauthier
+*      			abdul ershad abdul ali 2285559
  */
 
 #include "Game/Sections/SnakeGame.h"
 
 namespace ELE3312 {
 
+/**
+ * @brief Construct a new Snake Game:: Snake Game object
+ * 
+ */
 SnakeGame::SnakeGame() {}
 
+/**
+ * @brief Destroy the Snake Game:: Snake Game object
+ * 
+ */
 SnakeGame::~SnakeGame() {}
 
+/** @brief Setup routine for a SnakeGame object.
+  * @param disp Pointer to a Graphics object that is used to display the SnakeGame graphics.
+  * @param keypad Pointer to a Keypad object that is used to select the player's game character.
+  * @param comm Pointer to a Communication object that is used to exchange messages with another player.
+  * @param gyro Pointer to an MPU6050 object, used to control the player.
+  */
 void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm){
 	this->disp = disp;
 	this->gyro = gyro;
@@ -26,6 +41,13 @@ void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communic
 
 }
 
+/**
+ * @brief Method that contains the mechanics of the SnakeGame. It will update one frame.
+ * 
+ * @param commType 
+ * @return true indicates the local snake has hit something and lost the game
+ * @return false indicates no collision for the local snake is found and the game continues
+ */
 bool SnakeGame::run(CommType commType){
 
 	switch(state){
@@ -60,7 +82,7 @@ bool SnakeGame::run(CommType commType){
 			if( localSnake.checkColision() || remoteSnake.checkColision( localSnake.getHeadTile() ) ){
 
 				if(comm){
-					VictoryMessage msg(Winner::Winner);
+					VictoryMessage msg(Winner::Winner); // envoi d'un message quand la partie est perdu par le joueur local
 					comm->send(&msg);
 				}
 				return true;
@@ -75,8 +97,10 @@ bool SnakeGame::run(CommType commType){
 
 }
 
-
-
+/**
+ * @brief Initializes the SnakeGame
+ * 
+ */
 void SnakeGame::initialize(){
 
 	disp->clearScreen();
@@ -107,16 +131,11 @@ void SnakeGame::initialize(){
 
 }
 
-void SnakeGame::handleRemote(FruitMessage msg){
-
-	if(!msg.isValid()){
-		return;
-	}
-
-	fruits.setFruit(msg.getFruit(), msg.getIndex());
-
-}
-
+/**
+ * @brief handles incoming messages
+ * 
+ * @param msg SnakeMessage containing the direction of the remote snake
+ */
 void SnakeGame::handleRemote(SnakeMessage msg){
 
 	if(!msg.isValid()){

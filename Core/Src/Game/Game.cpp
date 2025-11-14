@@ -1,7 +1,6 @@
 /*
  * Game.cpp
  *
- *  Created on: Oct 22, 2025
  *      Author: jcgauthier 2212198
  *      		abdul ershad abdul ali 2285559
  */
@@ -18,7 +17,6 @@ UART Game::uart;
 
 Menu Game::menu_;
 SnakeGame Game::snakeGame_;
-VictoryScreen Game::victoryScreen_;
 
 // uart
 Ringbuffer Game::uartBuffer;
@@ -64,6 +62,7 @@ void Game::run(){
 	SerialFrame frame;
 
 	while(1){
+
 		// Check UART and dispatch messages
 		if (uartBuffer.read(buff, BUFFER_SIZE) != 0) {
 			frame.setMessage(buff, BUFFER_SIZE);
@@ -107,8 +106,7 @@ void Game::run(){
 				break;
 		}
 
-
-
+		// Handle game states
 		switch(state_){
 			case GameState::Menu:
 				if(menu_.run() ){
@@ -136,6 +134,10 @@ void Game::run(){
 	}
 }
 
+/**
+ * @brief affichage de l'écran quand la partie est perdu
+ * 
+ */
 void Game::gameOver(){
 
 	display_.clearScreen();
@@ -146,7 +148,7 @@ void Game::gameOver(){
 }
 
 /**
- * @brief affiche l'écran de "game over"
+ * @brief affichage de l'écran quand la partie est gagné
  * 
  */
 void Game::winGame(VictoryMessage msg){

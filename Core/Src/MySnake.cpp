@@ -1,11 +1,9 @@
 /*
  * MySnake.cpp
  *
- *  Created on: Oct 3, 2025
  *      Author: jcgauthier 2212198
  *      		abdul ershad abdul ali 2285559
  */
-
 #include "MySnake.h"
 
 namespace ELE3312{

@@ -10,7 +10,6 @@
   */
 #include "NucleoImp/SerialCom/SerialFrame.h"
 #include "NucleoImp/SerialCom/COBS.h"
-#include "Game/ComMessages/TextMessage.h"
 #include "Game/ComMessages/CommTypeMessage.h"
 
 using namespace ELE3312;
@@ -93,6 +92,11 @@ CommTypeMessage SerialFrame::getCommTypeMessage(){
 	return msg;
 }
 
+/**
+ * @brief returns a SnakeMessage
+ * 
+ * @return SnakeMessage 
+ */
 SnakeMessage SerialFrame::getSnakeMessage(){
 	SnakeMessage msg;
 	if(messageType == MessageType::Direction){
@@ -102,15 +106,11 @@ SnakeMessage SerialFrame::getSnakeMessage(){
 	return msg;
 }
 
-FruitMessage SerialFrame::getFruitMessage(){
-	FruitMessage msg;
-	if(messageType == MessageType::Fruit){
-		msg.setData(msgBuffer + sizeof(uart_header_t) , msgSize);
-		msg.setValid(true);
-	}
-	return msg;
-}
-
+/**
+ * @brief returns VictoryMessage
+ * 
+ * @return VictoryMessage 
+ */
 VictoryMessage SerialFrame::getVictoryMessage(){
 	VictoryMessage msg;
 	if(messageType == MessageType::Winner){

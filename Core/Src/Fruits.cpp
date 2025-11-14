@@ -58,6 +58,10 @@ void Fruits::displayFruits() { //2285559
     }
 }
 
+/**
+ * @brief generates a new fruit in the tile array
+ * 
+ */
 void Fruits::generateNewFruit(){
 
 	for (int i = 0; i < fruitCount_; i++) {
@@ -103,28 +107,6 @@ extern "C" bool checkEatFruit_asm(Fruits *self, tile headTile);
  */
 bool Fruits::checkEatFruitV2(tile headTile) {
     return checkEatFruit_asm(this, headTile);
-}
-
-void Fruits::sendFruit(tile fruit, int index){
-
-	if(!comm_)
-		return;
-
-	FruitMessage msg(fruit, index);
-	comm_->send(&msg);
-
-}
-
-void Fruits::sendFruits(){
-
-	if(!comm_)
-		return;
-
-	for (int i = 0; i < fruitCount_; i++) {
-		sendFruit(fruits_[i], i);
-	}
-
-
 }
 
 

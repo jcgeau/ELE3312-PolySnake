@@ -3,6 +3,7 @@
  *
  *  Created on: Nov 1, 2025
  *      Author: jcgauthier
+ *      		abdul ershad abdul ali 2285559
  */
 
 #include "Game/Sections/Menu.h"
@@ -28,6 +29,11 @@ void Menu::setup(Display *disp, Keypad *keypad, Communication *comm) {
 
 }
 
+/**
+ * @brief returns the type of communication of the current microcontroler
+ * 
+ * @return CommType: Master, Slave or Unknown
+ */
 CommType Menu::getType(){
 	return type;
 }
@@ -65,7 +71,7 @@ bool Menu::run(){
 					   case KeyCode::THREE:
 						   type = CommType::Slave;
 						   if(comm){
-							   int randSeed = std::time(nullptr);
+							   int randSeed = HAL_GetTick();
 							   std::srand(randSeed);
 							   CommTypeMessage msg(CommType::Slave, randSeed);
 							   comm->send(&msg);
@@ -93,7 +99,7 @@ void Menu::initialize(){
 }
 
 /** @brief Handles incoming messages.
-  * @param [in] msg PlayerChoiceMessage containing the character choice of the other player.
+  * @param [in] msg CommTypeMessage containing the player choice and random seed.
   */
 void Menu::handleRemote(CommTypeMessage msg){
 

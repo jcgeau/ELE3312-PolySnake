@@ -1,17 +1,14 @@
-/**
-  * @file PlayerChoice.cpp
-  * @date June 2025
-  * @brief This file implements the PlayerChiceMessage class that is used to
-  * exchange the player's character choice.
-  *
-  * @defgroup ELE3312
-  * @{
-  */
+/*
+ * VictoryMessage.cpp
+ *
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
+ */
 #include "Game/ComMessages/VictoryMessage.h"
 using namespace ELE3312;
 
 /** @brief Constructor for the VictoryMessage class.
-  * @param [in] Winner The character the player has chosen in the menu (Pacman or Ghost).
+  * @param [in] Winner the winner of the game, remote or local
   */
 VictoryMessage::VictoryMessage(Winner winner) : Message{MessageType::Winner},
 	winner{winner} {
@@ -80,9 +77,11 @@ std::string VictoryMessage::toString() const{
 	return "Unknown";
 }
 
-/** @brief Returns the character the player has chosen.
-  * @retval The chosen character (e.g. PacMan or Ghost).
-  */
+/**
+ * @brief returns the winner of the game
+ * 
+ * @return Winner local, remote or unknown
+ */
 Winner VictoryMessage::getWinner() const{
 	return winner;
 }

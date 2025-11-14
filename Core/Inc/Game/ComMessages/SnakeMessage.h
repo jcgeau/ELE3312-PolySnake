@@ -1,12 +1,9 @@
-/**
-  * @file TextMessage.h 
-  * @date June 2025
-  * @brief Declares the TextMessage class that represents a message
-  * object that carries a text string.
-  * 
-  * @defgroup ELE3312
-  * @{
-  */
+/*
+ * SnakeMessage.cpp
+ *
+ *      Author: jcgauthier 2212198
+ *      		abdul ershad abdul ali 2285559
+ */
 #ifndef SNAKEMESSAGE_INCLUDE_GUARD
 #define SNAKEMESSAGE_INCLUDE_GUARD
 

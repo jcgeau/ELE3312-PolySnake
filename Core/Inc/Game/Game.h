@@ -20,7 +20,6 @@
 #include "Game/ComMessages/CommTypeMessage.h"
 #include "Game/Sections/Menu.h"
 #include "Game/Sections/SnakeGame.h"
-#include "Game/Sections/VictoryScreen.h"
 #include "NucleoImp/SerialCom/SerialFrame.h"
 #include "cpp_main.h"
 #include "MySnake.h"
@@ -84,7 +83,6 @@ private:
 
 	static Menu menu_;
 	static SnakeGame snakeGame_;
-	static VictoryScreen victoryScreen_;
 
 
 	CommType commType_{CommType::Unknown};

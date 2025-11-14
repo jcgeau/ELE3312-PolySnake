@@ -11,7 +11,6 @@
 #include "tile.h"
 #include "Interfaces/Display/Display.h"
 #include "Interfaces/Communication/Communication.h"
-#include "Game/ComMessages/FruitMessage.h"
 #include "cpp_main.h"
 
 #include <cstdlib>
@@ -33,8 +32,6 @@ public:
 	void generateNewFruit();
 	bool checkEatFruit(tile headTile);
 	bool checkEatFruitV2(tile headTile);
-	void sendFruit(tile fruit, int index);
-	void sendFruits();
 
 private:
 

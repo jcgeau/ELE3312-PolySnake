@@ -17,8 +17,7 @@
 #include "MySnake.h"
 #include "Fruits.h"
 #include <vector>
-#include <cstdlib>
-#include <ctime>
+
 
 namespace ELE3312 {
 
@@ -35,7 +34,6 @@ public:
 	void setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm);
 
 	bool run(CommType commType);
-	void handleRemote(FruitMessage msg);
 	void handleRemote(SnakeMessage msg);
 
 private:
