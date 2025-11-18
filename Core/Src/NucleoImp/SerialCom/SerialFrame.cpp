@@ -16,7 +16,7 @@ using namespace ELE3312;
 
 /** @brief Structure that describes the header of the data frame.
   */
-typedef struct {
+typedef struct { // 2212198
 	uint16_t size;
 	uint16_t type;
 	uint32_t crc;
@@ -69,7 +69,9 @@ MessageType SerialFrame::getMessageType(){
 void SerialFrame::setMessage(uint8_t* byteArray, size_t arraySize){
 	msgBuffer = byteArray;
 	msgSize = *(uint16_t*)msgBuffer;
-	if(msgSize > arraySize){
+
+	if( (msgSize > arraySize)){
+		printf("invalid message sent");
 		msgSize = 0;
 		msgBuffer = nullptr;
 		messageType = MessageType::Unknown;
@@ -77,7 +79,6 @@ void SerialFrame::setMessage(uint8_t* byteArray, size_t arraySize){
 	}
 	messageType = (MessageType)(*((uint16_t*)(msgBuffer+2)));
 }
-
 
 
 /** @brief Returns a PlayerChoiceMessage.
@@ -134,7 +135,8 @@ std::tuple<uint8_t*, size_t> SerialFrame::msgToByteArray(Message *message) {
 	uart_header_t header = {0, 0 , 0};
 	header.size = message->getSize();
 	header.type = (uint16_t) message->getType();
-	header.crc  = 0; // TODO: implement CRC via hardware
+	header.crc  = 0;
+
 	size_t idx  = 0;
 	uint8_t *pHeader = (uint8_t *) &header;
 	// Copy header into tempBuffer
@@ -147,6 +149,7 @@ std::tuple<uint8_t*, size_t> SerialFrame::msgToByteArray(Message *message) {
 		tempBuffer[idx] = pMessage[j];
 		idx += 1;
 	}
+
 	size_t len = cobsEncode(tempBuffer, idx, encodeBuffer);
 	return {encodeBuffer, len};
 }
