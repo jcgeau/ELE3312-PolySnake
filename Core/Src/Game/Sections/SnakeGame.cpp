@@ -28,11 +28,13 @@ SnakeGame::~SnakeGame() {}
   * @param comm Pointer to a Communication object that is used to exchange messages with another player.
   * @param gyro Pointer to an MPU6050 object, used to control the player.
   */
-void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm){
+void SnakeGame::setup(Display *disp, MotionInput *gyro, Keypad* keypad, Distance *distance, Communication *comm, RGBLight *rgbLed){
 	this->disp = disp;
 	this->gyro = gyro;
 	this->keypad = keypad;
 	this->comm = comm;
+	this->distance = distance;
+	this->rgbLed = rgbLed;
 	opponentEncountered = false;
 
 	localSnake.setup(disp);
@@ -58,7 +60,7 @@ bool SnakeGame::run(CommType commType){
 
 		case SnakeGameState::Run:
 
-			if(counter < localSnake.getSpeedDelay()){
+			if((counter < localSnake.getSpeedDelay()) || ( (counter < turboDelay) && (isTurbo()) ) ){
 				counter++;
 				return false;
 			}
@@ -75,7 +77,7 @@ bool SnakeGame::run(CommType commType){
 			}
 
 			if(comm){
-				SnakeMessage msg(localSnake.getDirection());
+				SnakeMessage msg(localSnake.getDirection(), localSnake.getTurbo());
 				comm->send(&msg);
 			}
 
@@ -103,6 +105,7 @@ bool SnakeGame::run(CommType commType){
  */
 void SnakeGame::initialize(){
 
+	rgbLed->setColorRGB(255, 50,255);
 	disp->clearScreen();
 	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 
@@ -143,10 +146,23 @@ void SnakeGame::handleRemote(SnakeMessage msg){
 	}
 
 	remoteSnake.setDirection(msg.getDirection());
+	remoteSnake.setTurbo(msg.getTurbo());
 
 	if(remoteSnake.move(fruits.checkEatFruit(remoteSnake.getHeadTile()))){
 		fruits.generateNewFruit();
 	}
+
+}
+
+bool SnakeGame::isTurbo(){
+
+	if(distance->getDistance() < 1.0){
+		localSnake.setTurbo(true);
+		return true;
+	}
+
+	localSnake.setTurbo(false);
+	return false;
 
 }
 

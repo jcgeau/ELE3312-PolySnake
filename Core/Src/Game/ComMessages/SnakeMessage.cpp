@@ -10,13 +10,19 @@ using namespace ELE3312;
 /** @brief Constructor for the SnakeMessage class.
   * @param [in] Direction Current direction of a MySnake object
   */
-SnakeMessage::SnakeMessage(Direction direction) : Message{MessageType::Direction},
-	direction{direction} {
+SnakeMessage::SnakeMessage(Direction direction, bool turbo) : Message{MessageType::Direction} {
+	data.direction = direction;
+	data.turbo = turbo;
+
 }
 
 /** @brief Default constructor for the SnakeMessage class.
   */
-SnakeMessage::SnakeMessage() : Message{MessageType::Direction}, direction{Direction::Unknown} {}
+SnakeMessage::SnakeMessage() : Message{MessageType::Direction} {
+	data.direction = Direction::Unknown;
+	data.turbo = false;
+
+}
 
 // Setters
 
@@ -32,11 +38,19 @@ void SnakeMessage::setType(MessageType newType){
   * @param [in] length The number of bytes contained in the specified array of bytes.
   */
 void SnakeMessage::setData(uint8_t *newData, size_t length){
-	if (length < sizeof(Direction)){
-		direction = Direction::Unknown;
+	if (length < sizeof(SnakeData)){
 		return;
 	}
-	direction = *(Direction*)newData;
+	data.direction = ((SnakeData*)newData)->direction;
+	data.turbo = ((SnakeData*)newData)->turbo;
+}
+
+void SnakeMessage::setDirection(Direction direction){
+	data.direction = direction;
+}
+
+void SnakeMessage::setTurbo(bool turbo){
+	data.turbo = turbo;
 }
 
 // Getters
@@ -52,21 +66,21 @@ MessageType SnakeMessage::getType(){
   * @retval The number of bytes contained in the binary representation of the message's content.
   */
 size_t SnakeMessage::getSize() const{
-	return sizeof(Direction);
+	return sizeof(SnakeData);
 }
 
 /** @brief Returns the binary representation of the message's content.
   * @retval An array of bytes representing the contents of the message.
   */
 const uint8_t *SnakeMessage::getData() const{
-	return  (uint8_t*)&direction;
+	return  (uint8_t*)&data;
 }
 
 /** @brief Returns a textual representation of the message's content.
   * @retval A text string containing the message's content.
   */
 std::string SnakeMessage::toString() const{
-	switch(direction){
+	switch(data.direction){
 		case Direction::NORTH :
 			return "North";
 		case Direction::SOUTH :
@@ -85,7 +99,11 @@ std::string SnakeMessage::toString() const{
  * @return Direction East, west, south or north
  */
 Direction SnakeMessage::getDirection() const{
-	return direction;
+	return data.direction;
+}
+
+bool SnakeMessage::getTurbo() const{
+	return data.turbo;
 }
 
 /**

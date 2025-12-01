@@ -73,6 +73,10 @@ Direction MySnake::getDirection(){
 	return direction_;
 }
 
+bool MySnake::getTurbo(){
+	return turbo_;
+}
+
 /**
  * @brief mettre des paramètres dans une tuile du serpent
  * 
@@ -93,7 +97,9 @@ void MySnake::setDirection(Direction direction){
 	direction_ = direction;
 }
 
-
+void MySnake::setTurbo(bool isTurbo){
+	turbo_ = isTurbo;
+}
 /**
  * @brief Déplace le serpent d'une case dans la Direction courante et affiche le serpent
  *		  en effacant (ou non si il mange) la tuile de queue et en affichant la nouvelle position de tête
@@ -109,7 +115,7 @@ bool MySnake::move(bool eat){
 
 	snake_[head_].disp(display_);
 
-	head_ = ( head_ >= 99) ? 0 : (head_ + 1);
+	head_ = (head_ + 1) % 100;
 
 	switch(direction_){
 		case Direction::NORTH:
@@ -135,8 +141,13 @@ bool MySnake::move(bool eat){
 	snake_[head_].disp(display_);
 	snake_[tail_].erase(display_);
 
+	if(turbo_){
+		tail_ = (tail_ == 0) ? 99 : tail_ - 1;
+		snake_[tail_].erase(display_);
+	}
+
 	if(!eat){
-		tail_ = ( tail_ >= 99) ? 0 : (tail_ + 1);
+		tail_ = (tail_ + 1) % 100;
 		return false;
 	}
 

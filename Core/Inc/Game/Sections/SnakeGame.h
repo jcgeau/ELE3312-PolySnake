@@ -11,6 +11,8 @@
 #include "Interfaces/MotionInput/MotionInput.h"
 #include "Interfaces/Display/Display.h"
 #include "Interfaces/Communication/Communication.h"
+#include "Interfaces/Distance/Distance.h"
+#include "Interfaces/RGBLight/RGBLight.h"
 #include "Game/ComMessages/SnakeMessage.h"
 #include "Game/ComMessages/VictoryMessage.h"
 #include "Game/ComMessages/CommTypeMessage.h"
@@ -31,16 +33,19 @@ class SnakeGame {
 public:
 	SnakeGame();
 	virtual ~SnakeGame();
-	void setup(Display *disp, MotionInput *gyro, Keypad* keypad, Communication *comm);
+	void setup(Display *disp, MotionInput *gyro, Keypad *keypad, Distance *distance, Communication *comm, RGBLight *rgbLed);
 
 	bool run(CommType commType);
 	void handleRemote(SnakeMessage msg);
+	bool isTurbo();
 
 private:
 	Display *disp = nullptr;
 	MotionInput *gyro = nullptr;
 	Communication *comm = nullptr;
 	Keypad *keypad = nullptr;
+	Distance *distance = nullptr;
+	RGBLight *rgbLed = nullptr;
 
 	CommType commType = CommType::Unknown;
 	MySnake localSnake;
@@ -51,6 +56,7 @@ private:
 	SnakeGameState state = SnakeGameState::Initialization;
 
 	int counter{0};
+	int turboDelay{20};
 
 	void initialize();
 

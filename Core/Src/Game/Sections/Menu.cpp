@@ -21,11 +21,12 @@ Menu::Menu() {}
   * @param rgb Pointer to an RGBLicht object, used to indicate the player's color.
   * @param players Pointer to a PlayerManager object that manages player meta data.
   */
-void Menu::setup(Display *disp, Keypad *keypad, Communication *comm) {
+void Menu::setup(Display *disp, Keypad *keypad, Communication *comm, RGBLight * rgbLed) {
 
 	this->disp = disp;
 	this->keypad = keypad;
 	this->comm = comm;
+	this->rgbLed = rgbLed;
 
 }
 
@@ -91,6 +92,7 @@ bool Menu::run(){
   */
 void Menu::initialize(){
 
+	rgbLed->setColorRGB(255,255,50);
 	disp->clearScreen();
 	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	disp->drawString(110, 170, "player 1: 1 \n Player 2: 3", Color::WHITE);

@@ -15,6 +15,8 @@
 #include "Game/Sections/SnakeGame.h"
 #include "Interfaces/Keypad/Keypad.h"
 #include "MySnake.h"
+#include "NucleoImp/Distance/HCSR04Distance.h"
+#include "NucleoImp/RGBLight/RGBLED.h"
 #include "NucleoImp/Display/ILI9341Display.h"
 #include "NucleoImp/Keypad/GPIOKeypad.h"
 #include "NucleoImp/MotionInput/MPU6050MotionInput.h"
@@ -62,6 +64,8 @@ class Game {
 
   void handleUART(uint8_t data);
   void handleUART(uint8_t* data, uint16_t size);
+  
+  // music functions
   void soundInit();
   void updateSound();
   void setNote();
@@ -98,6 +102,8 @@ class Game {
   static GPIOKeypad keypad_;
   static UART uart;
   static DACSound sound_;
+  static HCSR04Distance distance_;
+  static RGBLED rgbLed_;
 
   // music
   int index{0};

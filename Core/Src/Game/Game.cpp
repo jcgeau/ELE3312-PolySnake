@@ -16,6 +16,8 @@ MPU6050MotionInput Game::motionInput_;
 GPIOKeypad Game::keypad_;
 UART Game::uart;
 DACSound Game::sound_;
+HCSR04Distance Game::distance_;
+RGBLED Game::rgbLed_;
 
 Menu Game::menu_;
 SnakeGame Game::snakeGame_;
@@ -41,9 +43,11 @@ void Game::setup(peripheral_handles* handles) {
   keypad_.setup(handles->gpio_keypad);
   uart.setup(handles->huart, 5);
   sound_.setup(handles->hdac, handles->htim_dac, 84000000UL);
+  distance_.setup(3.0f, 27.0f, handles->htim_distance);
+  rgbLed_.setup(handles->htim_led, TIM_CHANNEL_2, TIM_CHANNEL_3, TIM_CHANNEL_4);
 
-  menu_.setup(&display_, &keypad_, &uart);
-  snakeGame_.setup(&display_, &motionInput_, &keypad_, &uart);
+  menu_.setup(&display_, &keypad_, &uart, &rgbLed_);
+  snakeGame_.setup(&display_, &motionInput_, &keypad_, &distance_, &uart, &rgbLed_);
 
   // fruits_.setup(&display_);
   uartBuffer.setup();
@@ -61,6 +65,7 @@ void Game::run() {
   SerialFrame frame;
 
   while (1) {
+
     if (sound_.needUpdate) {
       updateSound();
       sound_.needUpdate = false;
@@ -104,6 +109,7 @@ void Game::run() {
       case GameState::SnakeGame:
         keypad_.update();
         motionInput_.update();
+        distance_.update_distance();
         break;
       case GameState::VictoryScreen:
         break;
@@ -142,6 +148,7 @@ void Game::run() {
  *
  */
 void Game::gameOver() {
+  rgbLed_.setColorRGB(255, 50, 50);
   display_.clearScreen();
   display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
   display_.drawString(120, 160, "GAME OVER", Color::RED);
@@ -157,6 +164,7 @@ void Game::winGame(VictoryMessage msg) {
     return;
   }
 
+  rgbLed_.setColorRGB(50, 255, 50);
   display_.clearScreen();
   display_.drawString(30, 0, "2212198 & 2285559", Color::WHITE);
   display_.drawString(120, 160, "WINNER", Color::GREEN);

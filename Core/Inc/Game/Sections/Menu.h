@@ -11,6 +11,7 @@
 #include "Interfaces/Keypad/Keypad.h"
 #include "Interfaces/Communication/Communication.h"
 #include "Game/ComMessages/CommTypeMessage.h"
+#include "Interfaces/RGBLight/RGBLight.h"
 // #include "Game/ComMessages/PlayerChoiceMessage.h"
 #include <memory>
 #include <cstdlib>
@@ -31,7 +32,7 @@ enum class MenuState {
 class Menu {
 public:
 	Menu();
-	void setup(Display *disp, Keypad *keypad, Communication *comm);
+	void setup(Display *disp, Keypad *keypad, Communication *comm, RGBLight *rgbLed);
 	virtual ~Menu() = default;
 
 	CommType getType();
@@ -45,6 +46,8 @@ private:
 	Display *disp {nullptr};
 	Keypad *keypad {nullptr};
 	Communication *comm {nullptr};
+	RGBLight *rgbLed {nullptr};
+
 	bool choiceGhost_{false};
 	MenuState state {MenuState::Initialization};
 	CommType type {CommType::Unknown};

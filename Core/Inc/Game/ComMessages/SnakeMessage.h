@@ -15,26 +15,33 @@
 
 namespace ELE3312 {
 
+struct SnakeData{
+	Direction direction;
+	bool turbo;
+};
 
 /** @brief The LabyrinthMessage class encapsulates information in the
 * labyrinth phase of the game.
 */
 class SnakeMessage : public Message {
 	public:
-		SnakeMessage(Direction direction);
+		SnakeMessage(Direction direction, bool turbo);
 		SnakeMessage();
 		// Setters
 		void setType(MessageType newType);
 		virtual void setData(uint8_t *newData, size_t length) override;
+		void setDirection(Direction direction);
+		void setTurbo(bool turbo);
 		// Getters
 		MessageType getType();
 		virtual size_t getSize() const override;
 		virtual const uint8_t *getData() const override;
 		Direction getDirection() const;
+		bool getTurbo() const;
 
 		virtual std::string toString() const override;
 	private:
-		Direction direction;
+		SnakeData data;
 };
 
 } // End of namespace ELE3312

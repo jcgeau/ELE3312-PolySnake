@@ -46,9 +46,11 @@ public:
 	int getSpeedDelay();
 	tile getHeadTile();
 	Direction getDirection();
+	bool getTurbo();
 
 	void setSnakeTile(int index, int x, int y, tileType id);
 	void setDirection(Direction direction);
+	void setTurbo(bool isTurbo);
 
 	bool move(bool eat);
 	void turn(bool turnDirection);
@@ -79,6 +81,7 @@ private:
 	tileType BODY{tileType::BACKGROUND};
 
 	int snakeSpeed_{200};
+	bool turbo_{false};
 	Direction direction_{Direction::NORTH};
 
 	tile fruits_[10]; // 10 fruits maximum
