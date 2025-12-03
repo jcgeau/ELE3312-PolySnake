@@ -60,7 +60,7 @@ bool SnakeGame::run(CommType commType){
 
 		case SnakeGameState::Run:
 
-			if((counter < localSnake.getSpeedDelay()) || ( (counter < turboDelay) && (isTurbo()) ) ){
+			if(( (counter < turboDelay) && (isTurbo()) ) || (counter < localSnake.getSpeedDelay())){
 				counter++;
 				return false;
 			}
@@ -156,7 +156,9 @@ void SnakeGame::handleRemote(SnakeMessage msg){
 
 bool SnakeGame::isTurbo(){
 
-	if(distance->getDistance() < 1.0){
+	printf("%f \n", distance->getDistance());
+
+	if(distance->getDistance() < 5.0){
 		localSnake.setTurbo(true);
 		return true;
 	}

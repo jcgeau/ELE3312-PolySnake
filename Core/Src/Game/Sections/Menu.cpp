@@ -96,6 +96,7 @@ void Menu::initialize(){
 	disp->clearScreen();
 	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
 	disp->drawString(110, 170, "player 1: 1 \n Player 2: 3", Color::WHITE);
+	rgbLed->turnOn();
 
 
 }

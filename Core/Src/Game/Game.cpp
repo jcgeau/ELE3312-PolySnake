@@ -125,15 +125,11 @@ void Game::run() {
           state_ = GameState::SnakeGame;
         }
         break;
-
       case GameState::SnakeGame:
         if (snakeGame_.run(commType_)) state_ = GameState::VictoryScreen;
-
         break;
-
       case GameState::VictoryScreen:
         gameOver();
-        break;
 
       default:
         break;
