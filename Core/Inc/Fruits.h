@@ -39,7 +39,7 @@ private:
 	Communication *comm_ = nullptr;
 
 	tile fruits_[100]; // 10 fruits maximum
-	int fruitCount_{10};
+	int fruitCount_{50};
 
 
 };

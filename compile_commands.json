@@ -1,0 +1,292 @@
+[
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Fruits.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Fruits.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Fruits.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/CommTypeMessage.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/ComMessages/CommTypeMessage.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/CommTypeMessage.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/SnakeMessage.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/ComMessages/SnakeMessage.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/SnakeMessage.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/VictoryMessage.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/ComMessages/VictoryMessage.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/ComMessages/VictoryMessage.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Game.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/Game.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Game.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Sections/Menu.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/Sections/Menu.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Sections/Menu.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Sections/SnakeGame.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Game/Sections/SnakeGame.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Game/Sections/SnakeGame.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Communication/Message.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Interfaces/Communication/Message.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Communication/Message.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Point.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Interfaces/Display/Point.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Point.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Rect.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Interfaces/Display/Rect.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Rect.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Sprite.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/Interfaces/Display/Sprite.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/Interfaces/Display/Sprite.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/MySnake.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/MySnake.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/MySnake.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ILI9341Display.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Display/ILI9341Display.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ILI9341Display.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Display/ili9341.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341_font.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Display/ili9341_font.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341_font.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341_gfx.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Display/ili9341_gfx.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Display/ili9341_gfx.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Distance/HCSR04Distance.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Distance/HCSR04Distance.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Distance/HCSR04Distance.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Keypad/GPIOKeypad.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/Keypad/GPIOKeypad.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/Keypad/GPIOKeypad.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/MotionInput/MPU6050MotionInput.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/MotionInput/MPU6050MotionInput.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/MotionInput/MPU6050MotionInput.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/MotionInput/mpu6050.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/MotionInput/mpu6050.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/MotionInput/mpu6050.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/COBS.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/SerialCom/COBS.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/COBS.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/Ringbuffer.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/SerialCom/Ringbuffer.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/Ringbuffer.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/SerialFrame.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/SerialCom/SerialFrame.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/SerialFrame.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/UART.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/NucleoImp/SerialCom/UART.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/NucleoImp/SerialCom/UART.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc -mcpu\u003dcortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/checkColision_asm.o\" \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/checkColision_asm.s\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/checkColision_asm.s"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc -mcpu\u003dcortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/checkEatFruit_asm.o\" \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/checkEatFruit_asm.s\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/checkEatFruit_asm.s"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-g++ \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/cpp_main.cpp\" -mcpu\u003dcortex-m4 -std\u003dgnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O1 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/cpp_main.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/cpp_main.cpp"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/main.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/main.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/main.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/stm32f4xx_hal_msp.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/stm32f4xx_hal_msp.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/stm32f4xx_hal_msp.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/stm32f4xx_it.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/stm32f4xx_it.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/stm32f4xx_it.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/syscalls.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/syscalls.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/syscalls.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/sysmem.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/sysmem.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/sysmem.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/system_stm32f4xx.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Src/system_stm32f4xx.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Src/system_stm32f4xx.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc -mcpu\u003dcortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Core/Startup/startup_stm32f446retx.o\" \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Startup/startup_stm32f446retx.s\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Core/Startup/startup_stm32f446retx.s"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+  },
+  {
+    "directory": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake",
+    "command": "arm-none-eabi-gcc \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c\" -mcpu\u003dcortex-m4 -std\u003dgnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -Wextra -fstack-usage -fcyclomatic-complexity --specs\u003dnano.specs -mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard -mthumb -o \"C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Debug/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.o\"",
+    "file": "C:/Users/jcgauthier/Documents/ELE3312-PolySnake/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c"
+  }
+]

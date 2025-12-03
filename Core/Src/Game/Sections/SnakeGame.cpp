@@ -59,10 +59,12 @@ bool SnakeGame::run(CommType commType){
 			state = SnakeGameState::Run;
 
 		case SnakeGameState::Run:
-
-			if(( (counter < turboDelay) && (isTurbo()) ) || (counter < localSnake.getSpeedDelay())){
+			// (counter < turboDelay) && (isTurbo()) ) ||
+			if(  counter < localSnake.getSpeedDelay()){
+				if((counter < turboDelay) || (!isTurbo())){
 				counter++;
 				return false;
+				}
 			}
 
 			fruits.displayFruits();
@@ -108,6 +110,7 @@ void SnakeGame::initialize(){
 	rgbLed->setColorRGB(255, 50,255);
 	disp->clearScreen();
 	disp->drawString(30, 0, "2212198 & 2285559", Color::WHITE);
+	distance->enableMeasurement();
 
 	switch(commType){
 
@@ -156,11 +159,9 @@ void SnakeGame::handleRemote(SnakeMessage msg){
 
 bool SnakeGame::isTurbo(){
 
-	printf("%f \n", distance->getDistance());
-
 	if(distance->getDistance() < 5.0){
 		localSnake.setTurbo(true);
-		return true;
+		return localSnake.getTurbo();
 	}
 
 	localSnake.setTurbo(false);

@@ -98,8 +98,16 @@ void MySnake::setDirection(Direction direction){
 }
 
 void MySnake::setTurbo(bool isTurbo){
+
+	int length = (head_ - tail_ + 100) % 100;
+
+	if(length > 2){
 	turbo_ = isTurbo;
+	}else{
+	turbo_ = false;
+	}
 }
+
 /**
  * @brief Déplace le serpent d'une case dans la Direction courante et affiche le serpent
  *		  en effacant (ou non si il mange) la tuile de queue et en affichant la nouvelle position de tête
@@ -141,9 +149,15 @@ bool MySnake::move(bool eat){
 	snake_[head_].disp(display_);
 	snake_[tail_].erase(display_);
 
-	if(turbo_){
-		tail_ = (tail_ == 0) ? 99 : tail_ - 1;
+	int length = (head_ - tail_ + 100) % 100;
+
+	// when turbo is active, the snake loses length when moving
+	if(turbo_ && (length > 3)){
+		tail_ = (tail_ + 1) % 100;
 		snake_[tail_].erase(display_);
+		tail_ = (tail_ + 1) % 100;
+		snake_[tail_].erase(display_);
+		return false;
 	}
 
 	if(!eat){
