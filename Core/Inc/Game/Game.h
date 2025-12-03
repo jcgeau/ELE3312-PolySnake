@@ -31,11 +31,6 @@
 
 namespace ELE3312 {
 
-struct Tone {
-  Note note;
-  uint16_t duration;
-};
-
 enum class GameState {
   Menu,
   GameModeMenu,
@@ -70,29 +65,6 @@ class Game {
   void updateSound();
   void setNote();
   bool waitSound();
-
-  Tone melody[32] = {
-      {{NoteName::E, 5}, 1}, {{NoteName::E, 5}, 1}, {{NoteName::E, 5}, 1},
-
-      {{NoteName::C, 5}, 1}, {{NoteName::E, 5}, 1}, {{NoteName::G, 5}, 3},
-
-      {{NoteName::C, 4}, 3},
-
-      {{NoteName::C, 5}, 1}, {{NoteName::G, 4}, 1}, {{NoteName::E, 4}, 3},
-
-      {{NoteName::A, 4}, 1}, {{NoteName::B, 4}, 1}, {{NoteName::AS, 4}, 1},
-      {{NoteName::A, 4}, 1},
-
-      {{NoteName::G, 4}, 1}, {{NoteName::E, 5}, 1}, {{NoteName::G, 5}, 1},
-      {{NoteName::A, 5}, 3},
-
-      {{NoteName::F, 5}, 1}, {{NoteName::G, 5}, 1}, {{NoteName::E, 5}, 1},
-      {{NoteName::C, 5}, 1}, {{NoteName::D, 5}, 1}, {{NoteName::B, 4}, 300},
-
-      {{NoteName::C, 5}, 1}, {{NoteName::G, 4}, 1}, {{NoteName::E, 4}, 3},
-
-      {{NoteName::A, 4}, 1}, {{NoteName::B, 4}, 1}, {{NoteName::AS, 4}, 1},
-      {{NoteName::A, 4}, 3}};
 
  private:
   peripheral_handles* handles_ = nullptr;

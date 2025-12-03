@@ -8,6 +8,7 @@
 #include "Game/Game.h"
 
 #include "NucleoImp/SerialCom/SerialFrame.h"
+#include "Ressources/MusicData.h"
 
 namespace ELE3312 {
 
@@ -126,7 +127,10 @@ void Game::run() {
         }
         break;
       case GameState::SnakeGame:
-        if (snakeGame_.run(commType_)) state_ = GameState::VictoryScreen;
+        if (snakeGame_.run(commType_)){
+        	state_ = GameState::VictoryScreen;
+        	sound_.disableSound();
+        }
         break;
       case GameState::VictoryScreen:
         gameOver();
