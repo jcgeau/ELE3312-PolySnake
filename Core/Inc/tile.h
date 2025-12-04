@@ -7,7 +7,8 @@
 
 #ifndef INC_TILE_H_
 #define INC_TILE_H_
-
+#include <cstdlib>
+#include <ctime>
 #include <NucleoImp/Display/ILI9341Display.h>
 
 namespace ELE3312{
@@ -15,7 +16,6 @@ namespace ELE3312{
 // dimensions for a tile
 constexpr uint16_t tileWidth{10};
 constexpr uint16_t tileHeight{10};
-
 // enum to clarify id type in tile struct
 enum class tileType {
 	BACKGROUND,
@@ -25,9 +25,7 @@ enum class tileType {
 	SNAKE_BODY2,
 	FRUIT_1,
 	FRUIT_2
-
 };
-
 
 
 struct tile {
@@ -48,7 +46,7 @@ struct tile {
 			case tileType::SNAKE_HEAD2: color = Color::PINK;break;
 			case tileType::SNAKE_BODY2: color = Color::PURPLE; break;
 			case tileType::FRUIT_1: color = Color::RED; break;
-			case tileType::FRUIT_2: color = Color::CYAN; break;
+			case tileType::FRUIT_2: color = Color::ORANGE; break;
 		}
 
 		return color;
@@ -56,11 +54,13 @@ struct tile {
 
 	// method to display a single tile
 	void disp(Display* display){
-		display->fillRect( this->idColor(this->id) , this->x , this->y , tileWidth , tileHeight );
+		//display->fillRect( this->idColor(this->id) , this->x , this->y , tileWidth , tileHeight );
+		display->fillCircle(this->idColor(this->id), this->x, this->y, 5);
 	}
 
 	void erase(Display* display){
-		display->fillRect( Color::BLACK , this->x , this->y , tileWidth , tileHeight );
+		//display->fillRect( Color::BLACK , this->x , this->y , tileWidth , tileHeight );
+		display->fillCircle(Color::BLACK, this->x, this->y, 5);
 	}
 
 };

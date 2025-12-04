@@ -40,7 +40,7 @@ void Fruits::generateFruits() { //2285559
     for (int i = 0; i < fruitCount_; i++) {
           fruits_[i].x = (std::rand() % 32) * 10;
           fruits_[i].y = (std::rand() % 24) * 10;
-          fruits_[i].id = tileType::FRUIT_1;
+          fruits_[i].id = (rand() % 2) ? tileType::FRUIT_2 : tileType::FRUIT_1;
 
     }
 }
@@ -58,17 +58,13 @@ void Fruits::displayFruits() { //2285559
     }
 }
 
-/**
- * @brief generates a new fruit in the tile array
- * 
- */
 void Fruits::generateNewFruit(){
 
 	for (int i = 0; i < fruitCount_; i++) {
 		if (fruits_[i].id == tileType::BACKGROUND) {
 			fruits_[i].x = (std::rand() % 32) * 10;
 			fruits_[i].y = (std::rand() % 24) * 10;
-			fruits_[i].id = tileType::FRUIT_1;
+			fruits_[i].id = (rand() % 2) ? tileType::FRUIT_2 : tileType::FRUIT_1;
 		}
 	}
 }
